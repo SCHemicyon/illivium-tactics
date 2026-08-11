@@ -1,0 +1,937 @@
+{
+  "name": "The Venomous Abyss",
+  "bosses": [
+    {
+      "id": "nekzali",
+      "name": "Nek'zali",
+      "image": "nekzali-icon.jpg",
+      "banner": "nekzali-banner.webp",
+
+      "meta": {
+        "combat": "Boss + adds",
+        "heroism": "Phase 2"
+      },
+
+      "warning": "Si Nek'zali atteint 100 points d'énergie, le raid wipe.",
+
+      "summary": "Empêchez les Amani agités d'atteindre le puits central. À 50 % HP le boss est immunisé. Tuez les deux échos pour retirer l'immunité du boss et brûlez un maximum de cadavres.  Terminez le combat sous BL avant l'enrage.",
+
+      "phases": [
+        {
+          "name": "Phase 1",
+          "description": "Contrôlez les adds et empêchez-les d'atteindre le puits central.",
+
+          "mechanics": [
+            {
+              "name": "Amani agités",
+              "types": ["adds", "control"],
+              "roles": ["dps"],
+              "text": "Ils apparaissent dans toute la salle et avancent vers le puits. Tant que leur bouclier est actif, ils sont immunisés au dégâts et au contrôles physiques. Utilisez des dégâts et contrôles magiques pour les regrouper et détruire leurs boucliers, puis tuez les."
+            },
+            {
+              "name": "Rite d'enroulement d'âmes",
+              "types": ["adds", "raid-damage"],
+              "roles": ["all"],
+              "text": "Chaque add qui atteint le puits donne de l'énergie à Nek'zali et augmente ses dégâts."
+            },
+            {
+              "name": "AoE au sol",
+              "types": ["aoe", "dodge"],
+              "roles": ["all"],
+              "text": "Plusieurs zones apparaissent pendant le combat. Esquivez-les."
+            },
+            {
+              "name": "Fantôme à dissiper",
+              "types": ["dispel", "positioning"],
+              "roles": ["dps", "heal"],
+              "text": "Un joueur est poursuivi par un fantôme. Déplacez vous en bord de salle avant d'être dissipé. La dissipation repousse et laisse une zone au sol.",
+              "plan": {
+                "title": "Placement de la dissipation",
+                "slides": ["nekzali-dispell-plan.png"]
+              }
+            },
+            {
+              "name": "Trancher / Évider",
+              "types": ["tank-swap"],
+              "roles": ["tank"],
+              "text": "Les attaques du boss appliquent un debuff de dégâts subis et de réduction des soins reçus. Échangez le boss avant d'avoir trop de charges."
+            },
+            {
+              "name": "Barrage de possession",
+              "types": ["raid-damage", "positioning"],
+              "roles": ["tank"],
+              "text": "Le tank ciblé s'éloigne du boss pour réduire les dégâts infligés au raid. Les autres joueurs quittent la trajectoire. Le tank utilise un défensif.",
+              "plan": {
+                "title": "Placement du barrage",
+                "slides": ["nekzali-barrage-plan.png"]
+              }
+            }
+          ]
+        },
+
+        {
+          "name": "Intermission",
+          "type": "intermission",
+          "description": "À 50 % HP, Nek'zali devient immunisé. Deux échos apparaissent successivement.",
+
+          "mechanics": [
+            {
+              "name": "Libération de l'écho",
+              "types": ["dodge"],
+              "roles": ["all"],
+              "text": "Un écho apparaît près d'un autel et canalise un rayon vers le puits. Évitez le rayon puis tuez l'écho lorsqu'il est libéré.",
+              "plan": {
+                "title": "Apparition de l'écho",
+                "slides": ["nekzali-beam-plan.png"]
+              }
+            },
+            {
+              "name": "Soak en demi-groupe",
+              "types": ["soak", "positioning"],
+              "roles": ["all"],
+              "text": "Le premier demi-groupe place et partage l'explosion sur un gros tas de cadavres pour en détruire un maximum. Les joueurs restants reçoivent chacun une zone de flamme qui détruit les cadavres dans son rayon lorsqu'elle explose.",
+              "plan": {
+                "title": "Destruction des cadavres",
+                "slides": ["nekzali-burn-1.png", "nekzali-burn-2.png"]
+              }
+            }
+          ],
+
+          "note": "Tuez les deux échos et détruisez un maximum de cadavres."
+        },
+
+        {
+          "name": "Phase 2",
+          "description": "Les mécaniques de la phase 1 reviennent. Nek'zali réinitialise son énergie et les cadavres non détruits sont ressuscités.",
+
+          "mechanics": [
+            {
+              "name": "Résurrection des Amani",
+              "types": ["adds"],
+              "roles": ["dps"],
+              "text": "Regroupez et éliminez rapidement les adds ressuscités. Utilisez l'Héroïsme au début de la phase."
+            },
+            {
+              "name": "Zones mobiles",
+              "types": ["movement", "dodge"],
+              "roles": ["all"],
+              "text": "Les zones laissées par les dissipations se déplacent en indiquant leur trajectoire. Ne restez pas sur leur chemin."
+            }
+          ]
+        }
+      ],
+
+      "roles": {
+        "tank": "Échangez le boss avant d'avoir trop de charges. Éloignez-vous pendant Barrage de possession et utilisez un défensif.",
+        "heal": "Attendez que les joueurs soient placés avant de dissiper. Surveillez la réduction de soins sur les tanks et les dégâts croissants du raid.",
+        "dps": "Regroupez, contrôlez et tuez rapidement les adds. Ne restez jamais sur la trajectoire du tank.",
+        "all": "Esquivez les AoE, placez correctement les dissipations et surveillez les zones mobiles en phase 2."
+      },
+
+      "video": {
+        "provider": "youtube",
+        "id": "Pt7Ktt3OdAo"
+      }
+    },
+
+    {
+      "id": "entombed-sentinels",
+      "name": "Entombed Sentinels",
+      "image": "entombed-sentinels-icon.jpg",
+      "banner": "entombed-sentinels-banner.webp",
+
+      "meta": {
+        "combat": "2 boss - Monocible",
+        "heroism": "Pull"
+      },
+
+      "warning": "Pendant l'intermission, tous les symboles doivent être résolus dans les 30 secondes, sinon c'est un wipe.",
+      "summary": "Chaque tank récupère un golem et joue dans un coin de la salle avec son groupe. À 100 points d'énergie, les deux golems se regroupent au centre et déclenchent une intermission. Les joueurs disposent alors de 30 secondes pour résoudre la mécanique sous peine de wipe. Après chaque intermission, les deux groupes échangent leur golem.",
+
+      "phases": [
+        {
+          "name": "Phase 1",
+          "description": "Séparez le raid en deux groupes. Chaque groupe joue avec son golem à plus de 40 mètres de l'autre.",
+
+          "mechanics": [
+            {
+              "name": "Domination d'Ula'tek",
+              "types": ["positioning"],
+              "roles": ["all"],
+              "text": "Si les deux golems sont à moins de 40 mètres l'un de l'autre, les dégâts qu'ils reçoivent sont réduits de 99 %."
+            },
+            {
+              "name": "Marque de sang / acide",
+              "types": ["raid-damage"],
+              "roles": ["all"],
+              "text": "Les joueurs situés à moins de 40 mètres d'un golem reçoivent toutes les 6 secondes un DOT cumulable d'une durée de 40 secondes."
+            }
+          ],
+
+          "columns": [
+            {
+              "title": "Souffle d'Ula'tek",
+              "subtitle": "Golem venin",
+
+              "mechanics": [
+                {
+                  "name": "Heurt de renforcement",
+                  "types": ["tank-swap"],
+                  "roles": ["tank"],
+                  "text": "Frappe la cible et lui inflige des dégâts physiques. Le golem gagne ensuite 15 % de dégâts supplémentaires jusqu'à ce qu'il frappe une cible différente."
+                },
+                {
+                  "name": "Coagulation de venin",
+                  "types": ["adds", "raid-damage"],
+                  "roles": ["dps", "heal"],
+                  "text": "Fait apparaître un globule de venin qui inflige des dégâts à tout le groupe à chaque pulsation. Éliminez-le rapidement."
+                },
+                {
+                  "name": "Gouttelettes toxiques",
+                  "types": ["positioning", "raid-damage"],
+                  "roles": ["all"],
+                  "text": "Des gouttelettes apparaissent dans la salle. Le groupe dispose de 16 secondes pour toutes les écraser. Chaque gouttelette restante provoque des dégâts supplémentaires sur le raid. Lorsqu'une gouttelette est écrasée, un laser apparaît entre elle et le boss : ne restez pas sur sa trajectoire.",
+
+                  "plan": {
+                    "title": "Gouttelettes toxiques",
+                    "slides": [
+                      {
+                        "image": "entombed-sentinels-toxic-drops-1.png",
+                        "alt": "Placement des joueurs pour écraser les gouttelettes toxiques"
+                      },
+                      {
+                        "image": "entombed-sentinels-toxic-drops-2.png",
+                        "alt": "Trajectoires des lasers après destruction des gouttelettes"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+
+            {
+              "title": "Sang d'Ula'tek",
+              "subtitle": "Golem sang",
+
+              "mechanics": [
+                {
+                  "name": "Injection de venin sanglant",
+                  "types": ["tank-swap"],
+                  "roles": ["tank"],
+                  "text": "Frappe la cible pour lui infliger des dégâts physiques et applique un DOT cumulable qui inflige des dégâts d'ombre pendant 40 secondes."
+                },
+
+                {
+                  "name": "Sang chancreux",
+                  "types": ["dispel"],
+                  "roles": ["heal"],
+                  "text": "Applique un DOT magique de 18 secondes infligeant des dégâts d'ombre. Dissipez-le."
+                },
+                {
+                  "name": "Miasme instable",
+                  "types": ["soak", "positioning", "ground-effect"],
+                  "roles": ["all"],
+                  "text": "Un joueur est ciblé et doit se placer au bord de la salle. Son groupe partage les dégâts du soak. Après l'explosion, les joueurs ayant participé disposent de 6 secondes pour se repositionner avant de déposer leurs flaques. Regroupez les flaques autant que possible sans les superposer afin de condamner le moins d'espace possible.",
+
+                  "plan": {
+                    "title": "Miasme instable",
+                    "slides": [
+                      {
+                        "image": "entombed-sentinels-unstable-miasma-1.png",
+                        "alt": "Placement du groupe pendant le soak de Miasme instable"
+                      },
+                      {
+                        "image": "entombed-sentinels-unstable-miasma-2.png",
+                        "alt": "Placement des flaques après le soak"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "name": "Intermission",
+          "type": "intermission",
+          "description": "À 100 points d'énergie, les deux golems se rejoignent au centre de la salle et deviennent immunisés aux dégâts. Le raid dispose de 30 secondes pour résoudre la mécanique.",
+
+          "mechanics": [
+            {
+              "name": "Symboles complémentaires",
+              "types": ["positioning"],
+              "roles": ["all"],
+              "text": "Chaque joueur reçoit un symbole. Entrez en collision avec un joueur possédant un symbole complémentaire afin de les combiner. L'objectif est de cumuler 4 globules de sang ou de venin. S'il reste un symbole sur un joueur à la fin des 30 secondes, c'est un wipe. Si tous les symboles sont résolus avant la fin du timer, l'intermission se termine immédiatement.",
+
+              "plan": {
+                "title": "Association des symboles",
+                "slides": [
+                  {
+                    "image": "entombed-sentinels-intermission-symbols.png",
+                    "alt": "Association des symboles complémentaires pendant l'intermission"
+                  }
+                ]
+              }
+            }
+          ],
+
+          "note": "Tous les symboles doivent être résolus avant la fin des 30 secondes."
+        },
+
+        {
+          "name": "Phase 2",
+          "description": "Les groupes reprennent leur placement initial, mais les tanks échangent les deux golems. Les mécaniques de la phase 1 recommencent avec le nouveau golem de chaque groupe.",
+
+          "mechanics": []
+        }
+      ],
+
+      "roles": {
+        "tank": "Gardez les deux golems à plus de 40 mètres l'un de l'autre. Gérez les tank busters de votre golem et échangez les boss après chaque intermission.",
+        "heal": "Surveillez les DOT cumulables et les dégâts de groupe. Dissipez Sang chancreux et anticipez les dégâts des globules de venin et des soaks.",
+        "dps": "Éliminez rapidement les globules de venin et gérez les mécaniques propres à votre golem. Pendant l'intermission, trouvez immédiatement votre symbole complémentaire.",
+        "all": "Restez avec votre groupe à proximité de votre golem, gérez correctement les placements et résolvez tous les symboles avant la fin des 30 secondes."
+      },
+
+      "video": {
+        "provider": "youtube",
+        "id": "aRoUprE2h0s"
+      }
+    },
+    {
+      "id": "vashnik",
+      "name": "Vashnik",
+      "image": "vashnik-icon.jpg",
+      "banner": "vashnik-banner.webp",
+
+      "meta": {
+        "combat": "Boss + adds",
+        "heroism": "Pull"
+      },
+
+      "warning": "Si un globule atteint le bassin central, c'est un wipe.",
+
+      "summary": "Vashnik active simultanément deux fontaines en fonction de son positionnement. Les mécaniques du boss et des globules dépendent des fontaines actives. Il faudra se déplacer dans toute la salle afin d'éviter que le boss ne cumule trop de bonus liés à une même fontaine. L'ordre de rotation conseillé est : Ombre > Feu > Sang.",
+
+      "phases": [
+        {
+          "name": "Phase 1",
+
+          "mechanics": [
+            {
+              "name": "Crochet dégoulinant",
+              "types": ["tank-swap"],
+              "roles": ["tank"],
+              "text": "Tank buster qui augmente les dégâts physiques reçus de 100 % pendant 32 secondes."
+            },
+            {
+              "name": "Écume pestilentielle",
+              "types": ["positioning"],
+              "roles": ["all"],
+              "text": "Plusieurs joueurs sont ciblés. Au bout de 6 secondes, des vagues de poison sont projetées dans les quatre directions cardinales. Positionnez-vous afin de ne pas toucher les autres joueurs, puis esquivez les vagues.",
+
+              "plan": {
+                "title": "Écume pestilentielle",
+                "slides": [
+                  {
+                    "image": "vashnik-ecume-pestilentielle.png",
+                    "alt": "Placement pour Écume pestilentielle"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Catalyseur malveillant",
+              "types": ["raid-damage"],
+              "roles": ["all"],
+              "text": "À la fin de la canalisation, le raid subit d'énormes dégâts. Utilisez un défensif."
+            },
+            {
+              "name": "Infusion d'ombre / feu / sang",
+              "types": ["raid-damage"],
+              "roles": ["all"],
+              "text": "Augmente de 200 % les dégâts des capacités élémentaires correspondantes et de 50 % les points de vie du globule élémentaire pendant 2 minutes. Cet effet est cumulable."
+            }
+          ],
+
+          "columns": [
+            {
+              "title": "Fontaine Ombre",
+
+              "mechanics": [
+                {
+                  "name": "Infection stygienne",
+                  "types": ["aoe", "raid-damage"],
+                  "roles": ["heal", "all"],
+                  "text": "Fait apparaître de nombreuses zones au sol à esquiver et applique un bouclier d'absorption de soins à plusieurs joueurs."
+                },
+                {
+                  "name": "Globule d'ombre",
+                  "types": ["adds", "control", "movement"],
+                  "roles": ["all"],
+                  "text": "Globule rapide et sensible aux contrôles. Tant qu'il est en vie, il inflige des dégâts aux joueurs proches et réduit leur vitesse de déplacement. Cet effet est cumulable. À sa mort, il fait apparaître des zones sous les joueurs : esquivez-les."
+                }
+              ]
+            },
+
+            {
+              "title": "Fontaine Feu",
+
+              "mechanics": [
+                {
+                  "name": "Infection explosive",
+                  "types": ["positioning", "raid-damage"],
+                  "roles": ["all"],
+                  "text": "Un joueur est ciblé. À l'explosion, le raid subit des dégâts en fonction de sa distance avec ce joueur. Éloignez-vous de la cible.",
+
+                  "plan": {
+                    "title": "Infection explosive",
+                    "slides": [
+                      {
+                        "image": "vashnik-infection-explosive.png",
+                        "alt": "Placement pour Infection explosive"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "Globule de feu",
+                  "types": ["adds", "raid-damage"],
+                  "roles": ["all"],
+                  "text": "Globule lent. Tant qu'il est en vie, il inflige des dégâts de feu toutes les 3 secondes. À sa mort, il applique un DOT de 4 secondes à tous les joueurs. Évitez de tuer les deux globules en même temps."
+                }
+              ]
+            },
+
+            {
+              "title": "Fontaine Sang",
+
+              "mechanics": [
+                {
+                  "name": "Infection siphonnante",
+                  "types": ["soak", "positioning"],
+                  "roles": ["all"],
+                  "text": "Un joueur reçoit une zone autour de lui et ses soins reçus sont réduits de 100 %. Les points de vie des joueurs présents dans le cercle sont ponctionnés afin de maintenir la cible en vie.",
+
+                  "plan": {
+                    "title": "Infection siphonnante",
+                    "slides": [
+                      {
+                        "image": "vashnik-infection-siphonnante.png",
+                        "alt": "Placement pour Infection siphonnante"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "Globule de sang",
+                  "types": ["adds", "raid-damage"],
+                  "roles": ["heal", "all"],
+                  "text": "Globule lent et immunisé aux contrôles. À sa mort, il se divise en deux globules et applique un bouclier d'absorption de soins à tous les joueurs. Chaque nouveau globule peut à son tour se subdiviser et appliquer des stacks supplémentaires."
+                }
+              ]
+            }
+          ],
+
+          "note": "Ordre de rotation conseillé : Ombre > Feu > Sang."
+        }
+      ],
+
+      "roles": {
+        "tank": "Gérez Crochet dégoulinant et déplacez Vashnik afin de faire tourner les fontaines actives sans accumuler trop de stacks d'une même infusion.",
+        "heal": "Anticipez les boucliers d'absorption de soins liés à la fontaine Ombre et aux globules de sang. Préparez également les dégâts importants de Catalyseur malveillant.",
+        "dps": "Tuez rapidement les globules avant qu'ils n'atteignent le bassin central. Contrôlez particulièrement les globules d'ombre et évitez de tuer simultanément les deux globules de feu.",
+        "all": "Respectez les placements des infections, esquivez les zones au sol et suivez la rotation Ombre > Feu > Sang."
+      },
+
+      "video": {
+        "provider": "youtube",
+        "id": "9SnpRaRo1qQ"
+      }
+    },
+    {
+      "id": "lost-explorers",
+      "name": "Lost Explorers",
+      "image": "lost-explorers-icon.jpg",
+      "banner": "lost-explorers-banner.webp",
+
+      "meta": {
+        "combat": "Council - 2 + 1",
+        "heroism": "Pull"
+      },
+
+      "warning": "Si Mor'zahi atteint 100 points d'énergie, c'est un wipe.",
+
+      "summary": "Mor'zahi contrôle 3 Tortollans et les force à se battre contre le groupe. Leurs points de vie ne sont pas liés, mais il faut les tuer simultanément. Parmi les trois, seul Gebbo ne peut pas être repositionné : il faudra donc adapter le placement d'Iku et Nama tout au long du combat.",
+
+      "phases": [
+        {
+          "name": "Phase 1",
+
+          "mechanics": [
+            {
+              "name": "Présence malveillante",
+              "types": ["raid-damage"],
+              "roles": ["heal"],
+              "text": "Inflige des dégâts ambiants au raid pendant toute la durée du combat."
+            },
+            {
+              "name": "Regard malfaisant",
+              "types": ["aoe", "dodge"],
+              "roles": ["all"],
+              "text": "Plusieurs zones apparaissent au sol. Esquivez-les."
+            },
+            {
+              "name": "Ascension renforcée",
+              "types": [],
+              "roles": [],
+              "text": "Mor'zahi accumule de l'énergie pendant le combat. S'il atteint 100 points d'énergie, c'est un wipe."
+            }
+          ],
+
+          "columns": [
+            {
+              "title": "Iku",
+
+              "mechanics": [
+                {
+                  "name": "Flammes de glace",
+                  "types": ["interrupt", "dispel"],
+                  "roles": ["all"],
+                  "text": "Sort à interrompre. S'il est lancé, il inflige de lourds dégâts à sa cible puis applique un DOT de 12 secondes qui réduit également sa vitesse de déplacement de 50 %. Le DOT peut être dissipé avec un dispell magique."
+                },
+                {
+                  "name": "Nova de transfert",
+                  "types": ["positioning", "raid-damage"],
+                  "roles": ["all"],
+                  "text": "Iku se téléporte sur un joueur et inflige des dégâts en fonction de sa distance avec les autres joueurs. Pour optimiser le changement de cible, le joueur ciblé peut se positionner sur le boss actuellement joué seul afin de signaler au groupe qu'il faut changer de cible.",
+
+                  "plan": {
+                    "title": "Nova de transfert",
+                    "slides": [
+                      {
+                        "image": "lost-explorers-nova-de-transfert.png",
+                        "alt": "Placement pour Nova de transfert"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "Éclats lacérants",
+                  "types": ["tank-swap"],
+                  "roles": ["tank"],
+                  "text": "Projette des éclats sur sa cible. Chaque éclat augmente les dégâts subis de 50 % pendant 1 minute et 18 secondes. Effectuez un tank swap avant d'accumuler trop de stacks."
+                },
+                {
+                  "name": "Gerbe de givrefeu",
+                  "important": true,
+                  "types": ["positioning", "ground-effect", "raid-damage"],
+                  "roles": ["all"],
+                  "text": "Plusieurs joueurs sont ciblés par des zones de givre ou de feu. Placez-les de manière à ne pas condamner inutilement la salle. Après avoir déposé leur zone, certains joueurs conservent un debuff permettant de détruire une zone de l'élément opposé. Ne détruisez pas toutes les zones en même temps, car chaque explosion inflige des dégâts au raid.",
+                  "plan": {
+                    "title": "Gerbe de givrefeu",
+                    "slides": [
+                      "lost-explorers-givrefeu-1.png",
+                      "lost-explorers-givrefeu-2.png"
+                    ]
+                  }
+                }
+              ]
+            },
+
+            {
+              "title": "Nama",
+
+              "mechanics": [
+                {
+                  "name": "Carapaces tournoyantes",
+                  "types": ["dodge"],
+                  "roles": ["all"],
+                  "text": "Lance 3 carapaces dans un cône devant lui. Un joueur touché est étourdi pendant 4 secondes."
+                },
+                {
+                  "name": "Aura d'unité",
+                  "types": ["positioning"],
+                  "roles": ["all"],
+                  "text": "Si Nama est trop proche des deux autres boss, les dégâts qu'ils subissent sont réduits de 99 %. Les Tortollans doivent rester séparés pendant tout le combat."
+                },
+                {
+                  "name": "Frappes assurées",
+                  "types": ["tank-swap"],
+                  "roles": ["tank"],
+                  "text": "Chaque attaque contre sa cible augmente les dégâts de Nama de 4 % pendant 1 minute. Effectuez régulièrement un tank swap."
+                },
+                {
+                  "name": "Collision puissante",
+                  "important": true,
+                  "types": ["soak", "positioning"],
+                  "roles": ["all"],
+                  "text": "Cible successivement un joueur en mêlée, un joueur à distance et un soigneur. Nama saute sur chacune des 3 cibles, inflige des dégâts aux joueurs présents dans la zone et les repousse. Ne vous faites pas projeter hors de la salle ou dans une autre zone dangereuse.",
+
+                  "plan": {
+                    "title": "Collision puissante",
+                    "slides": [
+                      {
+                        "image": "lost-explorers-collision-puissante.png",
+                        "alt": "Placement pour Collision puissante"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+
+            {
+              "title": "Gebbo",
+
+              "mechanics": [
+                {
+                  "name": "Lancer de camelote",
+                  "types": ["raid-damage"],
+                  "roles": ["all"],
+                  "text": "Gebbo libère des caisses en bois dans toute la salle. Marcher sur une caisse la détruit, applique un saignement cumulable au joueur et inflige également des dégâts à tout le raid. Une caisse peut faire apparaître un poisson : cliquez dessus pour le récupérer. Utilisez ensuite l'extra bouton sur l'un des trois Tortollans afin de réinitialiser l'énergie de Mor'zahi. Le Tortollan assommé récupère alors une capacité supplémentaire."
+                },
+                {
+                  "name": "Surprise explosive",
+                  "important": true,
+                  "types": ["positioning", "ground-effect", "raid-damage"],
+                  "roles": ["all"],
+                  "text": "Place une bombe sur un joueur. Celui-ci doit la déposer en bord de salle, de préférence hors de la trajectoire des boss. À l'explosion, utilisez les champignons présents dans la salle pour éviter l'onde de choc. La zone d'explosion condamne ensuite une partie de la salle pendant un certain temps.",
+
+                  "plan": {
+                    "title": "Surprise explosive",
+                    "slides": [
+                      
+                        "lost-explorers-surprise-explosive-1.png","lost-explorers-surprise-explosive-2.png"
+                        
+                      
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+
+      "roles": {
+        "tank": "Gardez les 3 Tortollans suffisamment éloignés les uns des autres et adaptez le placement d'Iku et Nama autour de Gebbo, qui ne peut pas être repositionné. Gérez les tank swaps liés à Éclats lacérants et Frappes assurées.",
+        "heal": "Anticipez les dégâts ambiants permanents de Présence malveillante, dissipez Flammes de glace si nécessaire et surveillez les dégâts de raid provoqués par la destruction des zones et des caisses.",
+        "dps": "Interrompez Flammes de glace, équilibrez les points de vie des 3 Tortollans afin de pouvoir les tuer simultanément et évitez de déclencher trop de dégâts de raid en même temps.",
+        "all": "Respectez les placements des différentes mécaniques, évitez les zones au sol et gérez rapidement les poissons obtenus dans les caisses afin de réinitialiser l'énergie de Mor'zahi."
+      },
+
+      "video": {
+        "provider": "youtube",
+        "id": "u8QPTiuhu6M"
+      }
+    },
+    {
+  "id": "sszorak",
+  "name": "Sszorak",
+  "image": "sszorak-icon.jpg",
+  "banner": "sszorak-banner.webp",
+
+  "meta": {
+    "combat": "Monocible",
+    "heroism": "Pull"
+  },
+
+  "warning": "Ne vous faites pas repousser en dehors de la plateforme.",
+
+  "summary": "Le combat repose principalement sur la gestion des déplacements, des projections et du placement des zones au sol. Les zones laissées par Déferlement venimeux doivent être positionnées en prévision de l'intermission afin de pouvoir les utiliser pour revenir vers le centre de la plateforme.",
+
+  "phases": [
+    {
+      "name": "Phase 1",
+
+      "mechanics": [
+        {
+          "name": "Présence d'Ula'tek",
+          "types": ["raid-damage"],
+          "roles": ["heal"],
+          "text": "Inflige des dégâts ambiants pendant toute la durée du combat."
+        },
+
+        {
+          "name": "Ravage",
+          "types": ["tank-swap", "frontal"],
+          "roles": ["tank"],
+          "text": "Frontal tank à placer en dehors du raid. Chaque Ravage augmente les dégâts du prochain Ravage de 300 %, nécessitant un swap tank."
+        },
+
+        {
+          "name": "Estropier",
+          "types": ["tank-swap", "frontal", "soak"],
+          "roles": ["tank", "all"],
+          "text": "Frontal tank dont les dégâts sont répartis entre tous les joueurs présents dans la zone. Placez-le dans le raid et effectuez le swap tank nécessaire.",
+
+          "plan": {
+            "title": "Ravage / Estropier",
+            "slides": [
+              "sszorak-estropier-1.png",
+              "sszorak-estropier-2.png"
+            ]
+          }
+        },
+
+        {
+          "name": "Tempête",
+          "types": ["dodge", "movement"],
+          "roles": ["all"],
+          "text": "Sszorak projette des tornades dans toutes les directions. Les joueurs touchés subissent un DOT de poison et un ralentissement."
+        },
+
+        {
+          "name": "Vents de travers déchaînés",
+          "types": ["positioning", "movement"],
+          "roles": ["all"],
+          "text": "Plusieurs joueurs sont ciblés par une zone et seront projetés dans la direction indiquée par leur flèche. Alignez-vous avec une flèche qui projette dans la direction opposée afin de nullifier la mécanique.",
+
+          "plan": {
+            "title": "Vents de travers déchaînés",
+            "slides": [
+              "sszorak-vents-de-travers.png"
+            ]
+          }
+        },
+
+        {
+          "name": "Déferlement venimeux",
+          "types": ["positioning", "ground-effect", "movement"],
+          "roles": ["all"],
+          "text": "Au bout de 8s, le joueur ciblé dépose une zone au sol. Si un joueur entre en contact avec cette zone, tous les joueurs sont repoussés dans la direction opposée au point d'impact. Positionnez les zones en prévision de l'intermission.",
+
+          "plan": {
+            "title": "Déferlement venimeux",
+            "slides": [
+              "sszorak-deferlement-venimeux-1.png",
+              "sszorak-deferlement-venimeux-2.png"
+            ]
+          }
+          
+        }
+        
+            
+        
+      ]
+    },
+
+    {
+      "name": "Intermission",
+      "type": "intermission",
+
+      "description": "Des rafales de vent provenant de différents endroits de la salle tentent d'éjecter les joueurs de la plateforme.",
+
+      "mechanics": [
+        {
+          "name": "Rafales de vent",
+          "types": ["movement", "positioning"],
+          "roles": ["all"],
+          "text": "Utilisez vos CD de déplacement pour résister un maximum aux rafales, puis déclenchez les différentes zones de Déferlement venimeux afin d'être renvoyés vers le milieu de la salle. Pensez à déclencher la dernière zone avant qu'elle ne se déclenche automatiquement.",
+
+          "plan": {
+            "title": "Intermission",
+            "slides": [
+              "sszorak-intermission-1.png",
+              "sszorak-intermission-2.png",
+              "sszorak-intermission-3.png"
+            ]
+          }
+        }
+      ],
+      "note" : "Sszorak subis 25% de dégâts supplémentaire pendant toute l'intermission"
+    }
+  ],
+
+  "roles": {
+    "tank": "Placez Ravage en dehors du raid, Estropier dans le raid et effectuez les swaps tank nécessaires.",
+    "heal": "Anticipez les dégâts ambiants permanents de Présence d'Ula'tek et les dégâts liés aux différentes projections et tornades.",
+    "dps": "Évitez les tornades et respectez les placements afin de ne pas provoquer de projection dangereuse pour le groupe.",
+    "all": "Placez correctement les zones de Déferlement venimeux, utilisez-les pendant l'intermission pour revenir vers le centre et ne vous faites jamais repousser hors de la plateforme."
+  },
+
+  "video": {
+    "provider": "youtube",
+    "id": "VIhxMqTXL6Q"
+  }
+},
+    {
+  "id": "twin-fangs",
+  "name": "Twin Fangs",
+  "image": "twin-fangs-icon.jpg",
+  "banner": "twin-fangs-banner.webp",
+
+  "meta": {
+    "combat": "2 boss + adds",
+    "heroism": "Pull"
+  },
+
+  "warning": "Si vous cumulez 8 stacks de Venin éternel, vous mourrez.",
+
+  "summary": "Tuez les 2 boss simultanément. Le boss qui survit enrage et gagne 25 % de dégâts toutes les 4s. À 100 énergie, l'intermission commence.",
+
+  "phases": [
+    {
+      "name": "Phase 1",
+
+      "mechanics": [
+        {
+          "name": "Vapeur toxique",
+          "types": ["raid-damage"],
+          "roles": ["heal"],
+          "text": "Inflige des dégâts ambiants pendant toute la durée du combat."
+        }
+      ],
+
+      "columns": [
+        {
+          "title": "Ithraz",
+          "subtitle": "Serpent de sang",
+
+          "mechanics": [
+            {
+              "name": "Brise-pierre",
+              "types": ["soak", "tank-swap"],
+              "roles": ["tank"],
+              "text": "Fait apparaître 3 zones successives à soak par le tank dans leur ordre d'apparition. Chaque soak applique une Fracture qui augmente les dégâts reçus. Effectuez un swap tank après la mécanique."
+            },
+
+            {
+              "name": "Ichor",
+              "types": ["positioning", "ground-effect", "raid-damage"],
+              "roles": ["all"],
+              "text": "Applique un debuff de 12s sur plusieurs joueurs. Plus la zone autour du joueur rétrécit, plus celui-ci subit de dégâts. À la fin du timer, le joueur dépose une flaque de sang à ses pieds."
+            ,"plan": {
+            "title": "Ichor",
+            "slides": [
+              "twin-fangs-ichor.png"
+            ]
+          }
+            
+            },
+
+            {
+              "name": "Festin féroce",
+              "important": true,
+              "types": ["soak", "raid-damage"],
+              "roles": ["all"],
+              "text": "Une zone apparaît sous le boss et explose 3 fois. Chaque explosion doit être soak par au moins 3 joueurs, retire 1 stack de Venin éternel et repousse les joueurs. Participer à un soak applique également un debuff qui augmente les dégâts du prochain Festin féroce de 800 %. Chaque joueur ne peut donc soak qu'une seule fois."
+            }
+          ]
+        },
+
+        {
+          "title": "Vexhul",
+          "subtitle": "Serpent de poison",
+
+          "mechanics": [
+            {
+              "name": "Déluge caustique",
+              "types": ["tank-swap", "aoe"],
+              "roles": ["tank", "all"],
+              "text": "Canalise sur le tank, le repousse et lui inflige des dégâts de nature. La canalisation applique également un debuff cumulable de 1min30 qui augmente les dégâts du prochain Déluge caustique de 10 %. Pendant toute la canalisation, Vexhul projette également des zones dans la salle qui font apparaître des Globules caustiques."
+            },
+
+            {
+              "name": "Globule caustique",
+              "types": ["raid-damage"],
+              "roles": ["all"],
+              "text": "Explose au bout de 10s et applique 1 stack de Venin éternel à tout le raid. Un joueur doit marcher sur le globule avant son explosion pour le détruire. Ce joueur récupère alors 1 stack de Venin éternel."
+            },
+
+            {
+              "name": "Crachat corrosif",
+              "types": ["adds", "priority-target"],
+              "roles": ["dps"],
+              "text": "Des serpents apparaissent dans le bassin central et ciblent des joueurs afin de leur appliquer des stacks de Venin éternel. Tuez-les rapidement."
+            , "plan": {
+            "title": "Crachat corrosif",
+            "slides": [
+              "twin-fangs-crachat.png"
+            ]
+          }
+            },
+
+            {
+              "name": "Remous des profondeurs",
+              "types": ["dodge", "movement"],
+              "roles": ["all"],
+              "text": "Fait apparaître des vagues qui se déplacent en direction des boss. Évitez-les afin de ne pas récupérer de stack de Venin éternel."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Intermission",
+      "type": "intermission",
+
+      "description": "Ithraz se téléporte dans un angle de la salle tandis que Vexhul se place dans le bassin central. Si tous les angles sont condamnés, c'est un wipe.",
+
+      "columns": [
+        {
+          "title": "Ithraz",
+          "subtitle": "Serpent de sang",
+
+          "mechanics": [
+            {
+              "name": "Zones de sang",
+              "types": ["ground-effect", "movement"],
+              "roles": ["all"],
+              "text": "Ithraz expulse des zones au sol qui infligent des dégâts et ralentissent les joueurs."
+            }
+          ]
+        },
+
+        {
+          "title": "Vexhul",
+          "subtitle": "Serpent de poison",
+
+          "mechanics": [
+            {
+              "name": "Laser rotatif",
+              "types": ["beam", "movement"],
+              "roles": ["all"],
+              "text": "Vexhul crache un laser qui tourne autour de la salle. Le sens de rotation du laser est indiqué par le sens de rotation des orbes autour de lui."
+            }
+          ]
+        }
+      ],
+      "mechanics": [{
+        "name": " ",
+      "plan": {
+            "title": "Intermission",
+            "slides": [
+              "twin-fangs-intermission.png"
+            ]
+          }}]
+    }
+  ],
+
+  "roles": {
+    "tank": "Gérez les swaps après Brise-pierre et restez toujours en mêlée des boss.",
+    "heal": "Anticipez les dégâts ambiants de Vapeur toxique, les dégâts des soaks de Festin féroce et les dégâts liés aux stacks de Venin éternel.",
+    "dps": "Tuez les 2 boss simultanément, éliminez rapidement les serpents du bassin central et gérez les Globules caustiques avant leur explosion.",
+    "all": "Surveillez vos stacks de Venin éternel, répartissez correctement les soaks de Festin féroce et évitez les vagues ainsi que le laser pendant l'intermission."
+  },
+
+  "video": {
+    "provider": "youtube",
+    "id": "q5TZHqIxbHQ"
+  }
+},
+    {
+      "id": "coiled-altar",
+      "name": "Coiled Altar",
+      "image": "coiled-altar-icon.jpg"
+    },
+    {
+      "id": "ulatek",
+      "name": "Ula'tek",
+      "image": "ulatek-icon.jpg"
+    }
+  ]
+}

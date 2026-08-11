@@ -1,0 +1,694 @@
+{
+  "paths": {
+    "base": "../assets/images/general/icons",
+    "roles": "roles",
+    "classes": "classes",
+    "specs": "specs"
+  },
+  "roles": {
+    "Tank": {
+      "name": "Tank",
+      "icon": "tank.svg"
+    },
+    "Heal": {
+      "name": "Heal",
+      "icon": "heal.svg"
+    },
+    "Rdps": {
+      "name": "Distance",
+      "icon": "rdps.svg"
+    },
+    "Mdps": {
+      "name": "Mélée",
+      "icon": "mdps.svg"
+    }
+  },
+  "classes": [
+    {
+      "id": 1,
+      "name": "Guerrier",
+      "color": "#C79C6E",
+      "classIcon": "Guerrier.webp",
+      "spells": {
+        "buffs": [
+          "Cri de commandement"
+        ],
+        "defensifs": [
+          "Cri de ralliement"
+        ],
+        "utilitaires": []
+      },
+      "specs": [
+        {
+          "id": 72,
+          "name": "Fureur",
+          "specIcon": "Guerrier_Fureur.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 71,
+          "name": "Armes",
+          "specIcon": "Guerrier_Armes.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 73,
+          "name": "Protection",
+          "specIcon": "Guerrier_Protection.jpg",
+          "role": "Tank",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Paladin",
+      "color": "#F48CBA",
+      "classIcon": "Paladin.webp",
+      "spells": {
+        "buffs": [],
+        "defensifs": [],
+        "utilitaires": [
+          "Main de liberté "
+        ]
+      },
+      "specs": [
+        {
+          "id": 65,
+          "name": "Sacré",
+          "specIcon": "Paladin_Sacré.jpg",
+          "role": "Heal",
+          "spells": {
+            "buffs": [],
+            "defensifs": [
+              "Maîtrise des auras"
+            ],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 70,
+          "name": "Vindicte",
+          "specIcon": "Paladin_Vindicte.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 66,
+          "name": "Protection",
+          "specIcon": "Paladin_Protection.jpg",
+          "role": "Tank",
+          "spells": {
+            "buffs": [],
+            "defensifs": [
+              "Bénédiction de protection",
+              "Bénédiction de sacrifice",
+              "Bénédiction de protection des sorts"
+            ],
+            "utilitaires": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Chasseur",
+      "color": "#AAD372",
+      "classIcon": "Chasseur.webp",
+      "spells": {
+        "buffs": [
+          "Marque du chasseur"
+        ],
+        "defensifs": [],
+        "utilitaires": []
+      },
+      "specs": [
+        {
+          "id": 254,
+          "name": "Précision",
+          "specIcon": "Chasseur_Précision.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 253,
+          "name": "Maîtrise des bêtes",
+          "specIcon": "Chasseur_Maîtrise des bêtes.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 255,
+          "name": "Survie",
+          "specIcon": "Chasseur_Survie.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Voleur",
+      "color": "#FFF468",
+      "classIcon": "Voleur.webp",
+      "spells": {
+        "buffs": [
+          "Poison atrophiant"
+        ],
+        "defensifs": [],
+        "utilitaires": []
+      },
+      "specs": [
+        {
+          "id": 260,
+          "name": "Hors-la-loi",
+          "specIcon": "Voleur_Hors-la-loi.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 259,
+          "name": "Assassinat",
+          "specIcon": "Voleur_Assassinat.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 261,
+          "name": "Finesse",
+          "specIcon": "Voleur_Finesse.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Prêtre",
+      "color": "#FFFFFF",
+      "classIcon": "Prêtre.webp",
+      "spells": {
+        "buffs": [
+          "Mot de pouvoir : Robustesse"
+        ],
+        "defensifs": [],
+        "utilitaires": [
+          "Dissipation de masse",
+          "Saut de foi"
+        ]
+      },
+      "specs": [
+        {
+          "id": 258,
+          "name": "Ombre",
+          "specIcon": "Prêtre_Ombre.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 257,
+          "name": "Sacré",
+          "specIcon": "Prêtre_Sacré.jpg",
+          "role": "Heal",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 256,
+          "name": "Discipline",
+          "specIcon": "Prêtre_Discipline.jpg",
+          "role": "Heal",
+          "spells": {
+            "buffs": [],
+            "defensifs": [
+              "Mot de pouvoir : Barrière"
+            ],
+            "utilitaires": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Chevalier de la mort",
+      "color": "#C41E3A",
+      "classIcon": "Chevalier de la mort.webp",
+      "spells": {
+        "buffs": [],
+        "defensifs": [],
+        "utilitaires": [
+          "Poigne de la mort"
+        ]
+      },
+      "specs": [
+        {
+          "id": 251,
+          "name": "Givre",
+          "specIcon": "Chevalier de la mort_Givre.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 252,
+          "name": "Impie",
+          "specIcon": "Chevalier de la mort_Impie.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 250,
+          "name": "Sang",
+          "specIcon": "Chevalier de la mort_Sang.jpg",
+          "role": "Tank",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": [
+              "Emprise de Fielsang"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Chaman",
+      "color": "#0070DD",
+      "classIcon": "Chaman.webp",
+      "spells": {
+        "buffs": [
+          "Fureur du ciel"
+        ],
+        "defensifs": [],
+        "utilitaires": []
+      },
+      "specs": [
+        {
+          "id": 263,
+          "name": "Amélioration",
+          "specIcon": "Chaman_Amélioration.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 262,
+          "name": "Élémentaire",
+          "specIcon": "Chaman_Élémentaire.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 264,
+          "name": "Restauration",
+          "specIcon": "Chaman_Restauration.jpg",
+          "role": "Heal",
+          "spells": {
+            "buffs": [],
+            "defensifs": [
+              "Totem de lien d'esprits"
+            ],
+            "utilitaires": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Mage",
+      "color": "#3FC7EB",
+      "classIcon": "Mage.webp",
+      "spells": {
+        "buffs": [
+          "Intelligence des Arcanes"
+        ],
+        "defensifs": [],
+        "utilitaires": []
+      },
+      "specs": [
+        {
+          "id": 62,
+          "name": "Givre",
+          "specIcon": "Mage_Givre.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 63,
+          "name": "Feu",
+          "specIcon": "Mage_Feu.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 64,
+          "name": "Arcanes",
+          "specIcon": "Mage_Arcanes.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Démoniste",
+      "color": "#8788EE",
+      "classIcon": "Démoniste.webp",
+      "spells": {
+        "buffs": [],
+        "defensifs": [
+          "Pierre de soins"
+        ],
+        "utilitaires": [
+          "Porte des démons"
+        ]
+      },
+      "specs": [
+        {
+          "id": 265,
+          "name": "Affliction",
+          "specIcon": "Démoniste_Affliction.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 267,
+          "name": "Destruction",
+          "specIcon": "Démoniste_Destruction.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 266,
+          "name": "Démonologie",
+          "specIcon": "Démoniste_Démonologie.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Moine",
+      "color": "#00FF98",
+      "classIcon": "Moine.webp",
+      "spells": {
+        "buffs": [
+          "Toucher mystique"
+        ],
+        "defensifs": [],
+        "utilitaires": [
+          "Anneau de paix"
+        ]
+      },
+      "specs": [
+        {
+          "id": 268,
+          "name": "Maître brasseur",
+          "specIcon": "Moine_Maître brasseur.jpg",
+          "role": "Tank",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 270,
+          "name": "Tisse-brume",
+          "specIcon": "Moine_Tisse-brume.jpg",
+          "role": "Heal",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 269,
+          "name": "Marche-vent",
+          "specIcon": "Moine_Marche-vent.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Druide",
+      "color": "#FF7C0A",
+      "classIcon": "Druide.webp",
+      "spells": {
+        "buffs": [
+          "Marque de la nature"
+        ],
+        "defensifs": [],
+        "utilitaires": [
+          "Ruée rugissante",
+          "Ursol",
+          "Typhon",
+          "Innervation"
+        ]
+      },
+      "specs": [
+        {
+          "id": 104,
+          "name": "Gardien",
+          "specIcon": "Druide_Gardien.jpg",
+          "role": "Tank",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 105,
+          "name": "Restauration",
+          "specIcon": "Druide_Restauration.jpg",
+          "role": "Heal",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 103,
+          "name": "Farouche",
+          "specIcon": "Druide_Farouche.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 102,
+          "name": "Équilibre",
+          "specIcon": "Druide_Équilibre.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Chasseur de démons",
+      "color": "#A330C9",
+      "classIcon": "Chasseur de démons.webp",
+      "spells": {
+        "buffs": [
+          "Marque du chaos"
+        ],
+        "defensifs": [
+          "Ténèbres"
+        ],
+        "utilitaires": []
+      },
+      "specs": [
+        {
+          "id": 581,
+          "name": "Vengeance",
+          "specIcon": "Chasseur de démons_Vengeance.jpg",
+          "role": "Tank",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 577,
+          "name": "Dévastation",
+          "specIcon": "Chasseur de démons_Dévastation.jpg",
+          "role": "Mdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 1480,
+          "name": "Dévoration",
+          "specIcon": "Chasseur de démons_Dévoration.png",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Évocateur",
+      "color": "#33937F",
+      "classIcon": "Évocateur.webp",
+      "spells": {
+        "buffs": [
+          "Bénédiction du bronze"
+        ],
+        "defensifs": [
+          "Zephyr",
+          "Secourir"
+        ],
+        "utilitaires": []
+      },
+      "specs": [
+        {
+          "id": 1473,
+          "name": "Augmentation",
+          "specIcon": "Évocateur_Augmentation.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 1468,
+          "name": "Préservation",
+          "specIcon": "Évocateur_Préservation.jpg",
+          "role": "Heal",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        },
+        {
+          "id": 1467,
+          "name": "Dévastation",
+          "specIcon": "Évocateur_Dévastation.jpg",
+          "role": "Rdps",
+          "spells": {
+            "buffs": [],
+            "defensifs": [],
+            "utilitaires": []
+          }
+        }
+      ]
+    }
+  ]
+}

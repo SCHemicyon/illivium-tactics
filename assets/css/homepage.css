@@ -1,0 +1,329 @@
+/* =========================================
+   SECTION DU RAID ACTUEL
+========================================= */
+
+.currentRaidSection {
+  width: min(1500px, calc(100% - 40px));
+  margin: 40px auto 70px;
+
+  color: #f2f2f2;
+}
+
+/* =========================================
+   BANNIÈRE DU RAID
+========================================= */
+
+.titleDiv {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+
+  width: 100%;
+  min-height: 320px;
+  margin-bottom: 28px;
+  padding: 40px;
+
+  background-image: url("../images/boss-guide/the-venomous-abyss/the venomous abyss preview.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  border: 1px solid #303030;
+  border-radius: 14px;
+
+  overflow: hidden;
+}
+
+.titleDiv::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.56) 45%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+
+  z-index: 1;
+}
+
+.titleDiv::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at 50% 20%,
+    rgba(218, 165, 32, 0.1),
+    transparent 48%
+  );
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.titleDiv h2 {
+  position: relative;
+  z-index: 2;
+
+  max-width: 100%;
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(42px, 6vw, 88px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  text-align: left;
+  text-wrap: balance;
+
+  text-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.95),
+    0 0 24px rgba(0, 0, 0, 0.8);
+}
+
+/* =========================================
+   GRILLE DES BOSS
+========================================= */
+
+.currentRaidBossContainer {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  width: 100%;
+  gap: 20px;
+}
+
+/* =========================================
+   CARTE D’UN BOSS
+========================================= */
+
+.raidBossContainer {
+  min-width: 0;
+  width: 100%;
+
+  background-color: #191919;
+
+  border: 1px solid #343434;
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.raidBossContainer a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 200px;
+  padding: 24px 18px;
+
+  color: #f1f1f1;
+
+  border: none;
+  outline: none;
+}
+
+.raidBossContainer h3 {
+  margin-top: 16px;
+
+  color: inherit;
+
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 700;
+  text-align: center;
+
+  transition: color 180ms ease;
+}
+
+/* =========================================
+   PORTRAIT DU BOSS
+========================================= */
+
+.bossLogoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 110px;
+  height: 110px;
+
+  flex-shrink: 0;
+  overflow: hidden;
+
+  background-color: #0a0a0a;
+
+  border: 2px solid #444444;
+  border-radius: 50%;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.bossLogoContainer img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition:
+    transform 230ms ease,
+    filter 230ms ease;
+}
+
+/* =========================================
+   SURVOL
+========================================= */
+
+.raidBossContainer:hover {
+  border-color: goldenrod;
+
+  transform: translateY(-4px);
+
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.34);
+}
+
+.raidBossContainer:hover h3 {
+  color: goldenrod;
+}
+
+.raidBossContainer:hover .bossLogoContainer {
+  border-color: goldenrod;
+  transform: scale(1.03);
+}
+
+.raidBossContainer:hover .bossLogoContainer img {
+  transform: scale(1.07);
+  filter: brightness(1.06);
+}
+
+/* =========================================
+   ÉCRANS INTERMÉDIAIRES
+========================================= */
+
+@media (max-width: 1200px) {
+  .currentRaidSection {
+    width: min(1100px, calc(100% - 30px));
+  }
+
+  .currentRaidBossContainer {
+    gap: 16px;
+  }
+
+  .raidBossContainer a {
+    min-height: 185px;
+    padding: 20px 14px;
+  }
+
+  .bossLogoContainer {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* =========================================
+   TABLETTE
+========================================= */
+
+@media (max-width: 900px) {
+  .currentRaidSection {
+    width: calc(100% - 30px);
+    margin: 30px auto 50px;
+  }
+
+  .titleDiv {
+    min-height: 240px;
+    margin-bottom: 20px;
+    padding: 28px;
+  }
+
+  .titleDiv h2 {
+    font-size: clamp(38px, 8vw, 64px);
+  }
+
+  .currentRaidBossContainer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 550px) {
+  .currentRaidSection {
+    width: calc(100% - 20px);
+    margin: 20px auto 40px;
+  }
+
+  .titleDiv {
+    min-height: 190px;
+    margin-bottom: 15px;
+    padding: 20px;
+
+    border-radius: 10px;
+  }
+
+  .titleDiv h2 {
+    font-size: clamp(32px, 11vw, 48px);
+    line-height: 1.05;
+  }
+
+  .currentRaidBossContainer {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .raidBossContainer a {
+    min-height: 165px;
+    padding: 18px;
+  }
+
+  .bossLogoContainer {
+    width: 92px;
+    height: 92px;
+  }
+
+  .raidBossContainer h3 {
+    margin-top: 13px;
+    font-size: 17px;
+  }
+}
+
+/* =========================================
+   RÉDUCTION DES ANIMATIONS
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .raidBossContainer,
+  .bossLogoContainer,
+  .bossLogoContainer img,
+  .raidBossContainer h3 {
+    transition: none;
+  }
+
+  .raidBossContainer:hover,
+  .raidBossContainer:hover .bossLogoContainer,
+  .raidBossContainer:hover .bossLogoContainer img {
+    transform: none;
+  }
+}

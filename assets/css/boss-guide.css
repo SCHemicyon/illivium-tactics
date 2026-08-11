@@ -1,0 +1,2105 @@
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+  --header-height: 70px;
+
+  --sidebar-collapsed-width: 72px;
+  --sidebar-expanded-width: 280px;
+
+  --page-background: #0d0f12;
+
+  --section-background: #15171b;
+  --section-background-light: #191c21;
+
+  --mechanic-background: #202329;
+  --mechanic-background-hover: #252930;
+
+  --raidplan-background: #0f1115;
+
+  --border-color: #2d3138;
+  --border-color-light: #3b4049;
+
+  --text-color: #dedede;
+  --muted-text-color: #969ba3;
+
+  --accent-color: goldenrod;
+  --warning-color: #f2b84b;
+}
+
+/* =========================================
+   PAGE
+========================================= */
+
+.bossGuideMain {
+  display: block;
+
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+
+  padding: 32px 28px 80px calc(var(--sidebar-collapsed-width) + 28px);
+
+  color: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+
+  background-color: var(--page-background);
+}
+
+.bossGuideContent {
+  width: min(1100px, 100%);
+  min-width: 0;
+
+  margin: 0 auto;
+}
+
+.loadingMessage,
+.errorMessage {
+  padding: 24px;
+
+  color: var(--muted-text-color);
+  text-align: center;
+
+  background-color: var(--section-background);
+
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+.errorMessage {
+  color: #ff7070;
+  border-color: #6b2929;
+}
+
+/* =========================================
+   BOUTON SIDEBAR MOBILE
+========================================= */
+
+.sidebarToggleButton {
+  display: none;
+
+  width: min(1100px, 100%);
+  min-height: 44px;
+
+  margin: 0 auto 16px;
+  padding: 10px 16px;
+
+  color: #101010;
+  font-weight: 700;
+
+  background-color: var(--accent-color);
+
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.bossSidebar {
+  position: fixed;
+
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+
+  z-index: 900;
+
+  width: var(--sidebar-collapsed-width);
+  height: calc(100vh - var(--header-height));
+
+  padding: 10px 8px;
+
+  background-color: #151515;
+
+  border-top: 1px solid #242424;
+  border-right: 1px solid #303030;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  box-shadow: 8px 0 24px rgba(0, 0, 0, 0.22);
+
+  transition:
+    width 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.bossSidebar:hover,
+.bossSidebar:focus-within {
+  width: var(--sidebar-expanded-width);
+
+  box-shadow: 14px 0 34px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================
+   SCROLLBAR SIDEBAR
+========================================= */
+
+.bossSidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #444444 #151515;
+}
+
+.bossSidebar::-webkit-scrollbar {
+  width: 7px;
+}
+
+.bossSidebar::-webkit-scrollbar-track {
+  background-color: #151515;
+}
+
+.bossSidebar::-webkit-scrollbar-thumb {
+  background-color: #444444;
+  border-radius: 999px;
+}
+
+/* =========================================
+   EN-TÊTE SIDEBAR
+========================================= */
+
+.bossSidebarHeader {
+  width: calc(var(--sidebar-expanded-width) - 16px);
+  min-height: 62px;
+
+  margin-bottom: 10px;
+  padding: 10px 10px 14px;
+
+  border-bottom: 1px solid transparent;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateX(-10px);
+
+  transition:
+    opacity 150ms ease,
+    visibility 150ms ease,
+    transform 180ms ease,
+    border-color 150ms ease;
+}
+
+.bossSidebar:hover .bossSidebarHeader,
+.bossSidebar:focus-within .bossSidebarHeader {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateX(0);
+
+  border-bottom-color: #303030;
+}
+
+.bossSidebarHeader h2 {
+  margin: 0;
+
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.bossSidebarHeader p {
+  margin-top: 5px;
+
+  color: #777777;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* =========================================
+   LISTE SIDEBAR
+========================================= */
+
+.bossSidebar nav {
+  width: calc(var(--sidebar-expanded-width) - 16px);
+}
+
+.bossSidebarList {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.bossSidebarItem {
+  width: 100%;
+}
+
+/* =========================================
+   LIENS SIDEBAR
+========================================= */
+
+.bossSidebarLink {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: center;
+
+  width: 100%;
+  min-height: 54px;
+  padding: 4px;
+
+  gap: 10px;
+
+  color: #a7a7a7;
+  text-decoration: none;
+
+  background-color: transparent;
+
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  overflow: hidden;
+
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.bossSidebarLink:hover {
+  color: var(--accent-color);
+
+  background-color: #222222;
+  border-color: #444444;
+}
+
+.bossSidebarLink.active {
+  color: var(--accent-color);
+
+  background-color: rgba(218, 165, 32, 0.1);
+
+  border-color: var(--accent-color);
+
+  box-shadow:
+    inset 3px 0 0 var(--accent-color),
+    0 0 12px rgba(218, 165, 32, 0.09);
+}
+
+/* =========================================
+   ICÔNES SIDEBAR
+========================================= */
+
+.bossSidebarIcon {
+  display: block;
+
+  width: 48px;
+  height: 48px;
+
+  object-fit: cover;
+
+  border: 2px solid #444444;
+  border-radius: 50%;
+
+  transition:
+    border-color 150ms ease,
+    filter 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.bossSidebarLink:hover .bossSidebarIcon {
+  border-color: #777777;
+  filter: brightness(1.08);
+}
+
+.bossSidebarLink.active .bossSidebarIcon {
+  border-color: var(--accent-color);
+
+  box-shadow:
+    0 0 0 2px rgba(218, 165, 32, 0.13),
+    0 0 12px rgba(218, 165, 32, 0.22);
+}
+
+/* =========================================
+   NOMS SIDEBAR
+========================================= */
+
+.bossSidebarName {
+  min-width: 0;
+
+  color: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateX(-8px);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  transition:
+    opacity 130ms ease,
+    visibility 130ms ease,
+    transform 180ms ease;
+}
+
+.bossSidebar:hover .bossSidebarName,
+.bossSidebar:focus-within .bossSidebarName {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateX(0);
+}
+
+/* =========================================
+   EN-TÊTE DU BOSS
+========================================= */
+
+.bossHeader {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  align-items: center;
+
+  width: 100%;
+  min-height: 280px;
+
+  margin-bottom: 32px;
+  padding: 36px 42px;
+
+  gap: 26px;
+
+  background-color: #15171b;
+
+  
+
+  border: 1px solid #3d424b;
+  border-bottom: 3px solid var(--accent-color);
+  border-radius: 14px;
+
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+
+  overflow: hidden;
+}
+
+/*
+ * Cette règle doit impérativement être placée
+ * APRÈS la règle .bossHeader.
+ */
+
+
+/* =========================================
+   DÉGRADÉ DE LISIBILITÉ
+========================================= */
+
+.bossHeader.hasBanner::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  background: radial-gradient(
+    circle at 78% 50%,
+
+    rgba(21, 23, 27, 0) 0%,
+    rgba(21, 23, 27, 0) 20%,
+    rgba(21, 23, 27, 1) 35%,
+    rgba(21, 23, 27, 1) 50%,
+    rgba(21, 23, 27, 1) 65%,
+    rgba(21, 23, 27, 1) 80%,
+    #15171b 100%
+  );
+
+  pointer-events: none;
+}
+
+/* =========================================
+   IMAGE DU BOSS EN ARRIÈRE-PLAN
+========================================= */
+
+.bossHeader.hasBanner::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  /*
+   * Décalage réel de l'image vers la droite.
+   * Plus la valeur est négative, plus elle sort
+   * du cadre vers la droite.
+   */
+  right: -120px;
+
+  /*
+   * Largeur de la zone contenant l'image.
+   * Tu peux augmenter cette valeur si nécessaire.
+   */
+  width: 900px;
+
+  background-image: var(--boss-banner-image);
+  background-repeat: no-repeat;
+
+  /*
+   * L'image prend toute la hauteur du header
+   * tout en conservant son ratio.
+   */
+  background-size: auto 100%;
+  background-position: right center;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+
+.bossHeaderIcon {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  width: 120px;
+  height: 120px;
+
+  object-fit: cover;
+
+  border: 3px solid var(--accent-color);
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 5px rgba(218, 165, 32, 0.1),
+    0 8px 24px rgba(0, 0, 0, 0.42);
+}
+
+.bossHeaderText {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+  max-width: 520px;
+}
+
+.bossHeaderText h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(40px, 6vw, 70px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+
+  text-shadow:
+    0 3px 8px rgba(0, 0, 0, 1),
+    0 0 24px rgba(0, 0, 0, 0.9);
+}
+
+.bossMeta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  margin-top: 18px;
+
+  gap: 9px;
+}
+
+.bossMetaItem {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 32px;
+  padding: 5px 11px;
+
+  color: #d0d2d5;
+  font-size: 13px;
+  font-weight: 700;
+
+  background-color: rgba(18, 20, 24, 0.9);
+
+  border: 1px solid #555a63;
+  border-radius: 999px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(4px);
+}
+
+.bossMetaItem.heroism {
+  color: var(--accent-color);
+
+  background-color: rgba(40, 32, 10, 0.9);
+
+  border-color: rgba(218, 165, 32, 0.65);
+}
+
+/* =========================================
+   TABLETTE
+========================================= */
+
+@media (max-width: 850px) {
+  .bossHeader {
+    grid-template-columns:
+      92px
+      minmax(0, 1fr);
+
+    min-height: 230px;
+
+    padding: 28px 30px;
+
+    gap: 20px;
+  }
+
+  .bossHeader.hasBanner {
+    background-position:
+      center,
+      72% center;
+  }
+
+  .bossHeaderIcon {
+    width: 92px;
+    height: 92px;
+  }
+
+  .bossHeaderText {
+    max-width: 460px;
+  }
+
+  .bossHeaderText h1 {
+    font-size: clamp(38px, 8vw, 58px);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .bossHeader {
+    grid-template-columns: 72px minmax(0, 1fr);
+    align-items: flex-end;
+
+    min-height: 220px;
+
+    padding: 22px;
+
+    gap: 16px;
+
+    text-align: left;
+  }
+
+  .bossHeader.hasBanner {
+    background-image:
+      linear-gradient(
+        to top,
+        rgba(10, 12, 15, 0.98) 0%,
+        rgba(10, 12, 15, 0.78) 52%,
+        rgba(10, 12, 15, 0.15) 100%
+      ),
+      var(--boss-banner-image);
+
+    background-position:
+      center,
+      68% center;
+  }
+
+  .bossHeaderIcon {
+    width: 72px;
+    height: 72px;
+
+    border-width: 2px;
+
+    box-shadow:
+      0 0 0 3px rgba(218, 165, 32, 0.1),
+      0 6px 18px rgba(0, 0, 0, 0.42);
+  }
+
+  .bossHeaderText {
+    width: 100%;
+    max-width: none;
+  }
+
+  .bossHeaderText h1 {
+    font-size: clamp(32px, 10vw, 48px);
+  }
+
+  .bossMeta {
+    justify-content: flex-start;
+
+    margin-top: 12px;
+  }
+
+  .bossMetaItem {
+    min-height: 28px;
+
+    padding: 4px 8px;
+
+    font-size: 11px;
+  }
+}
+
+/* =========================================
+   AVERTISSEMENT CRITIQUE
+========================================= */
+
+.criticalWarning {
+  margin-bottom: 32px;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  background-color: #210b0d;
+
+  border: 1px solid #8d3338;
+  border-left: 6px solid #ef4444;
+  border-radius: 10px;
+
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+}
+
+.criticalWarning h2 {
+  /* margin-bottom: 8px; */
+
+  color: #ff7777;
+  font-size: 35px;
+}
+
+.criticalWarning p {
+  margin: 0;
+
+  color: #dec3c4;
+  line-height: 1.7;
+}
+
+/* =========================================
+   RÉSUMÉ DU COMBAT
+========================================= */
+
+.bossSummary {
+  position: relative;
+
+  margin-bottom: 46px;
+  padding: 28px 30px;
+
+  color: #d1d4d8;
+  line-height: 1.8;
+
+  background-color: #171d23;
+
+  border: 1px solid #344250;
+  border-radius: 14px;
+
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
+}
+
+.bossSummary h2 {
+  margin-bottom: 15px;
+  padding-bottom: 12px;
+
+  color: #e2e8f0;
+  font-size: 22px;
+
+  border-bottom: 1px solid #344250;
+}
+
+.bossSummary p {
+  margin: 0;
+}
+
+/* =========================================
+   PHASES
+========================================= */
+
+.bossPhase {
+  position: relative;
+
+  margin-bottom: 52px;
+
+  padding: 0 28px 30px;
+
+  background-color: var(--section-background);
+
+  border: 1px solid #383d45;
+  border-radius: 14px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+
+  overflow: hidden;
+}
+
+/* Barre supérieure réellement visible */
+
+.bossPhase::before {
+  content: "";
+
+  display: block;
+
+  height: 5px;
+
+  margin: 0 -28px 0;
+
+  background-color: var(--accent-color);
+}
+
+/* Intermission clairement différente */
+
+.bossPhase.intermission {
+  background-color: #17131e;
+
+  /* border-color: #513b69; */
+}
+
+/* .bossPhase.intermission::before {
+  background-color: #9f7aea;
+} */
+
+/* =========================================
+   EN-TÊTE DE PHASE
+========================================= */
+
+.phaseHeader {
+  margin-bottom: 26px;
+  padding: 24px 0 20px;
+
+  border-bottom: 1px solid #393e46;
+}
+
+.phaseName {
+  margin-bottom: 7px;
+
+  color: var(--accent-color);
+
+  font-size: 35px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* .bossPhase.intermission .phaseName {
+  color: #b794f4;
+} */
+
+.phaseHeader h2 {
+  margin: 0;
+
+  color: #ffffff;
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.phaseDescription {
+  max-width: 900px;
+
+  margin-top: 12px;
+
+  color: #a9adb4;
+  line-height: 1.75;
+}
+
+/* =========================================
+   LISTE DES MÉCANIQUES
+========================================= */
+
+.phaseMechanics {
+  display: flex;
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+/* =========================================
+   COLONNES DE PHASE
+========================================= */
+
+.phaseColumns {
+  display: grid;
+
+  gap: 24px;
+
+  margin-top: 26px;
+}
+
+/* Nombre pair : deux par ligne */
+
+.phaseColumnsEven {
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+}
+
+/* Nombre impair : un par ligne */
+
+.phaseColumnsOdd {
+  grid-template-columns: 1fr;
+}
+
+/* =========================================
+   COLONNE D'UN BOSS
+========================================= */
+
+.phaseColumn {
+  min-width: 0;
+
+  padding: 20px;
+
+  background-color: #191c21;
+
+  border: 1px solid #3c4149;
+  border-radius: 12px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+/* =========================================
+   EN-TÊTE DE COLONNE
+========================================= */
+
+.phaseColumnHeader {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+
+  text-align: center;
+
+  border-bottom: 1px solid #3b4048;
+}
+
+.phaseColumnTitle {
+  margin: 0;
+
+  color: var(--accent-color);
+
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.phaseColumnSubtitle {
+  margin-top: 5px;
+
+  color: #92979f;
+
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* =========================================
+   MÉCANIQUES DANS UNE COLONNE
+========================================= */
+
+.phaseColumnMechanics {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+/*
+ * On réduit légèrement les mécaniques
+ * lorsqu'elles sont dans une colonne.
+ */
+
+.phaseColumn .mechanicCard {
+  padding: 18px;
+
+  background-color: #22252b;
+}
+
+.phaseColumn .mechanicHeader {
+  gap: 10px;
+}
+
+.phaseColumn .mechanicHeader h3 {
+  font-size: 17px;
+}
+
+.phaseColumn .mechanicText {
+  margin-top: 12px;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   BADGES DANS LES COLONNES
+========================================= */
+
+.phaseColumn .mechanicBadges {
+  max-width: 100%;
+
+  justify-content: flex-start;
+}
+
+.phaseColumn .mechanicBadge {
+  font-size: 9px;
+}
+
+/* =========================================
+   RAIDPLAN DANS UNE COLONNE
+========================================= */
+
+.phaseColumn .raidplanBlock {
+  margin-top: 20px;
+  padding: 14px;
+}
+
+.phaseColumn .raidplanViewport {
+  min-height: 220px;
+}
+
+.phaseColumn .raidplanHeader h4 {
+  font-size: 15px;
+}
+
+.phaseColumn .raidplanHeader p {
+  font-size: 12px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+  .phaseColumns {
+    grid-template-columns: 1fr;
+  }
+  .phaseColumnsEven,
+  .phaseColumnsOdd {
+    grid-template-columns: 1fr;
+  }
+
+  .phaseColumn {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .phaseColumns {
+    gap: 18px;
+
+    margin-top: 20px;
+  }
+
+  .phaseColumn {
+    padding: 15px;
+  }
+
+  .phaseColumnHeader {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+
+  .phaseColumnTitle {
+    font-size: 19px;
+  }
+
+  .phaseColumnMechanics {
+    gap: 15px;
+  }
+
+  .phaseColumn .mechanicCard {
+    padding: 15px;
+  }
+
+  .phaseColumn .raidplanViewport {
+    min-height: 180px;
+  }
+}
+
+/* =========================================
+   MÉCANIQUE
+========================================= */
+
+.mechanicCard {
+  padding: 21px 22px;
+
+  background-color: var(--mechanic-background);
+
+  border: 1px solid #41464f;
+  border-left: 4px solid #626975;
+  border-radius: 9px;
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.mechanicCard:hover {
+  background-color: var(--mechanic-background-hover);
+
+  border-color: #555c67;
+  border-left-color: var(--accent-color);
+}
+
+.mechanicHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  gap: 14px;
+}
+
+.mechanicHeader h3 {
+  margin: 0;
+
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.mechanicBadges {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  max-width: 55%;
+
+  gap: 6px;
+}
+
+.mechanicBadge {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 24px;
+  padding: 2px 8px;
+
+  color: #b8bbc0;
+
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  background-color: #2b2f35;
+
+  border: 1px solid #484d55;
+  border-radius: 999px;
+}
+
+.mechanicBadge.role-tank {
+  color: #93c5fd;
+
+  background-color: #172b43;
+  border-color: #31577d;
+}
+
+.mechanicBadge.role-heal {
+  color: #86efac;
+
+  background-color: #16331f;
+  border-color: #2e6941;
+}
+
+.mechanicBadge.role-dps {
+  color: #fca5a5;
+
+  background-color: #381818;
+  border-color: #713333;
+}
+
+.mechanicBadge.role-all {
+  color: #d1d1d1;
+}
+
+.mechanicText {
+  margin-top: 15px;
+
+  color: #cdd0d4;
+  line-height: 1.8;
+}
+
+/* =========================================
+   INFORMATION IMPORTANTE
+========================================= */
+
+.phaseNote {
+  position: relative;
+
+  margin-top: 24px;
+
+  padding: 17px 20px 17px 54px;
+
+  color: #f0ddb0;
+  line-height: 1.65;
+
+  background-color: #241d0b;
+
+  border: 1px solid #745c1b;
+  border-left: 5px solid var(--warning-color);
+  border-radius: 9px;
+}
+
+.phaseNote::before {
+  content: "⚠";
+
+  position: absolute;
+  top: 50%;
+  left: 18px;
+
+  color: var(--warning-color);
+  font-size: 23px;
+  line-height: 1;
+
+  transform: translateY(-50%);
+}
+
+.importantInformation {
+  position: relative;
+
+  padding-left: 52px;
+
+  background-color: #241d0b;
+
+  border-color: #745c1b;
+}
+
+.importantInformation::before {
+  content: "⚠";
+
+  position: absolute;
+  top: 17px;
+  left: 18px;
+
+  color: var(--warning-color);
+  font-size: 22px;
+}
+
+/* =========================================
+   RAIDPLAN
+========================================= */
+
+.raidplanBlock {
+  margin-top: 26px;
+  padding: 20px;
+
+  background-color: var(--raidplan-background);
+
+  border: 1px solid #343943;
+  border-radius: 10px;
+
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
+}
+
+.raidplanHeader {
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+
+  border-bottom: 1px solid #30353d;
+}
+
+.raidplanHeader h4 {
+  margin: 0;
+
+  color: var(--accent-color);
+  font-size: 17px;
+}
+
+.raidplanHeader p {
+  margin-top: 7px;
+
+  color: #999ea6;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.raidplanViewport {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 280px;
+
+  background-color: #090b0e;
+
+  border: 1px solid #2d3239;
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+.raidplanSlide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+
+  margin: 0;
+}
+
+.raidplanSlide img {
+  display: block;
+
+  width: 100%;
+  max-height: 650px;
+
+  object-fit: contain;
+}
+
+/* .raidplanSlide figcaption {
+  width: 100%;
+  padding: 12px 16px;
+
+  color: #a6aab1;
+  font-size: 13px;
+  text-align: center;
+
+  background-color: #15181c;
+
+  border-top: 1px solid #30353d;
+} */
+
+.raidplanArrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 52px;
+
+  color: #ffffff;
+  font-size: 32px;
+
+  background-color: rgba(0, 0, 0, 0.76);
+
+  border: 1px solid #555b64;
+  border-radius: 8px;
+
+  transform: translateY(-50%);
+
+  cursor: pointer;
+
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background-color 150ms ease;
+}
+
+.raidplanArrow:hover:not(:disabled) {
+  color: var(--accent-color);
+
+  background-color: rgba(0, 0, 0, 0.94);
+  border-color: var(--accent-color);
+}
+
+.raidplanArrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.raidplanArrowPrevious {
+  left: 12px;
+}
+
+.raidplanArrowNext {
+  right: 12px;
+}
+
+.raidplanDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  margin-top: 15px;
+
+  gap: 9px;
+}
+
+.raidplanDot {
+  width: 10px;
+  height: 10px;
+
+  padding: 0;
+
+  background-color: #555b64;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.raidplanDot:hover {
+  background-color: #8b919a;
+}
+
+.raidplanDot.active {
+  background-color: var(--accent-color);
+
+  transform: scale(1.3);
+}
+
+.raidplanBlock.singleSlide .raidplanArrow,
+.raidplanBlock.singleSlide .raidplanDots {
+  display: none;
+}
+
+/* =========================================
+   RÉSUMÉ PAR RÔLE
+========================================= */
+
+.roleSummarySection {
+  margin-bottom: 52px;
+  padding: 28px;
+
+  background-color: var(--section-background);
+
+  border: 1px solid #383d45;
+  border-radius: 14px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.roleSummarySection > h2 {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+
+  color: #ffffff;
+  font-size: 23px;
+
+  border-bottom: 2px solid #41464e;
+}
+
+.roleSummaryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.roleSummaryCard {
+  padding: 20px;
+
+  background-color: var(--mechanic-background);
+
+  border: 1px solid #41464f;
+  border-radius: 9px;
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+}
+
+.roleSummaryCard h3 {
+  margin-bottom: 12px;
+
+  font-size: 17px;
+}
+
+.roleSummaryCard.role-tank {
+  border-top: 4px solid #3b82f6;
+}
+
+.roleSummaryCard.role-tank h3 {
+  color: #60a5fa;
+}
+
+.roleSummaryCard.role-heal {
+  border-top: 4px solid #22c55e;
+}
+
+.roleSummaryCard.role-heal h3 {
+  color: #4ade80;
+}
+
+.roleSummaryCard.role-dps {
+  border-top: 4px solid #ef4444;
+}
+
+.roleSummaryCard.role-dps h3 {
+  color: #f87171;
+}
+
+.roleSummaryCard.role-all {
+  border-top: 4px solid #a3a3a3;
+}
+
+.roleSummaryCard.role-all h3 {
+  color: #d4d4d4;
+}
+
+.roleSummaryCard p {
+  margin: 0;
+
+  color: #cbd0d5;
+  line-height: 1.75;
+}
+
+/* =========================================
+   CONSEILS
+========================================= */
+
+.bossTipsSection {
+  margin-bottom: 52px;
+  padding: 28px;
+
+  background-color: var(--section-background);
+
+  border: 1px solid #383d45;
+  border-radius: 14px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.bossTipsSection > h2 {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+
+  color: #ffffff;
+  font-size: 23px;
+
+  border-bottom: 2px solid #41464e;
+}
+
+.bossTipsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.bossTipsCard {
+  padding: 20px;
+
+  border-radius: 10px;
+}
+
+.bossTipsCard.do {
+  background-color: #0d1d12;
+
+  border: 1px solid #235b35;
+  border-top: 4px solid #22c55e;
+}
+
+.bossTipsCard.dont {
+  background-color: #210d0d;
+
+  border: 1px solid #6f2c2c;
+  border-top: 4px solid #ef4444;
+}
+
+.bossTipsCard h3 {
+  margin-bottom: 12px;
+
+  font-size: 17px;
+}
+
+.bossTipsCard.do h3 {
+  color: #4ade80;
+}
+
+.bossTipsCard.dont h3 {
+  color: #ff7070;
+}
+
+.bossTipsCard ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.bossTipsCard li {
+  margin-bottom: 9px;
+
+  color: #cccccc;
+  line-height: 1.65;
+}
+
+/* =========================================
+   VIDÉO
+========================================= */
+
+.bossVideoSection {
+  padding: 28px;
+
+  background-color: var(--section-background);
+
+  border: 1px solid #383d45;
+  border-radius: 14px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.bossVideoSection h2 {
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+
+  color: #ffffff;
+  font-size: 23px;
+
+  border-bottom: 2px solid #41464e;
+}
+
+.videoWrapper {
+  position: relative;
+
+  width: 100%;
+  padding-top: 56.25%;
+
+  background-color: #080a0d;
+
+  border: 1px solid #383e47;
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border: none;
+}
+
+.videoUnavailable {
+  padding: 34px;
+
+  color: #858a91;
+  text-align: center;
+
+  background-color: #101216;
+
+  border: 1px solid #343941;
+  border-radius: 8px;
+}
+
+/* =========================================
+   TABLETTES
+========================================= */
+
+@media (max-width: 850px) {
+  :root {
+    --header-height: 118px;
+  }
+
+  .bossGuideMain {
+    padding: 20px 16px 60px;
+  }
+
+  .sidebarToggleButton {
+    display: block;
+  }
+
+  .bossSidebar {
+    position: static;
+
+    display: none;
+
+    width: min(1100px, 100%);
+    height: auto;
+    max-height: 70vh;
+
+    margin: 0 auto 20px;
+    padding: 14px;
+
+    border: 1px solid #303030;
+    border-radius: 12px;
+
+    box-shadow: none;
+
+    transition: none;
+  }
+
+  .bossSidebar.open {
+    display: block;
+  }
+
+  .bossSidebar:hover,
+  .bossSidebar:focus-within {
+    width: min(1100px, 100%);
+
+    box-shadow: none;
+  }
+
+  .bossSidebarHeader {
+    width: 100%;
+    min-height: 0;
+
+    margin-bottom: 14px;
+    padding: 0 0 14px;
+
+    opacity: 1;
+    visibility: visible;
+
+    transform: none;
+
+    border-bottom-color: #303030;
+
+    transition: none;
+  }
+
+  .bossSidebar nav {
+    width: 100%;
+  }
+
+  .bossSidebarLink {
+    grid-template-columns: 48px minmax(0, 1fr);
+
+    min-height: 58px;
+  }
+
+  .bossSidebarName {
+    opacity: 1;
+    visibility: visible;
+
+    transform: none;
+
+    transition: none;
+  }
+
+  .bossSidebarIcon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .bossHeader {
+    grid-template-columns: 88px minmax(0, 1fr);
+
+    padding: 22px;
+
+    gap: 18px;
+  }
+
+  .bossHeaderIcon {
+    width: 88px;
+    height: 88px;
+  }
+
+  .roleSummaryGrid,
+  .bossTipsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   MOBILES
+========================================= */
+
+@media (max-width: 600px) {
+  :root {
+    --header-height: auto;
+  }
+
+  .bossGuideMain {
+    padding: 14px 10px 50px;
+  }
+
+  .bossHeader {
+    grid-template-columns: 1fr;
+
+    margin-bottom: 28px;
+    padding: 20px;
+
+    text-align: center;
+  }
+
+  .bossHeaderIcon {
+    margin: 0 auto;
+  }
+
+  .bossMeta {
+    justify-content: center;
+  }
+
+  .criticalWarning,
+  .bossSummary,
+  .bossPhase,
+  .roleSummarySection,
+  .bossTipsSection,
+  .bossVideoSection {
+    margin-bottom: 32px;
+  }
+
+  .bossSummary,
+  .roleSummarySection,
+  .bossTipsSection,
+  .bossVideoSection {
+    padding: 20px;
+  }
+
+  .bossPhase {
+    padding: 0 18px 22px;
+  }
+
+  .bossPhase::before {
+    margin: 0 -18px 0;
+  }
+
+  .phaseHeader {
+    padding-top: 20px;
+  }
+
+  .phaseMechanics {
+    gap: 16px;
+  }
+
+  .mechanicCard {
+    padding: 17px;
+  }
+
+  .mechanicHeader {
+    flex-direction: column;
+  }
+
+  .mechanicBadges {
+    justify-content: flex-start;
+
+    max-width: 100%;
+  }
+
+  .raidplanBlock {
+    padding: 14px;
+  }
+
+  .raidplanViewport {
+    min-height: 190px;
+  }
+
+  .raidplanArrow {
+    width: 36px;
+    height: 46px;
+
+    font-size: 27px;
+  }
+
+  .raidplanArrowPrevious {
+    left: 7px;
+  }
+
+  .raidplanArrowNext {
+    right: 7px;
+  }
+
+  .phaseNote {
+    padding: 15px 15px 15px 48px;
+  }
+}
+
+/* =========================================
+   RÉDUCTION DES ANIMATIONS
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .bossSidebar,
+  .bossSidebarHeader,
+  .bossSidebarLink,
+  .bossSidebarName,
+  .bossSidebarIcon,
+  .mechanicCard,
+  .raidplanArrow,
+  .raidplanDot {
+    transition: none;
+  }
+
+  .raidplanDot.active {
+    transform: none;
+  }
+}
+
+/* =========================================
+   RAIDPLAN CLIQUABLE
+========================================= */
+
+.raidplanImage {
+  cursor:pointer;
+}
+
+
+/* =========================================
+   LIGHTBOX RAIDPLAN
+========================================= */
+
+.raidplanLightbox {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background-color: rgba(0, 0, 0, 0.92);
+
+  backdrop-filter: blur(6px);
+}
+
+
+/* =========================================
+   CONTENU
+========================================= */
+
+.raidplanLightboxContent {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: min(95vw, 1600px);
+  height: 92vh;
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.raidplanLightboxFigure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+}
+
+.raidplanLightboxImage {
+  display: block;
+
+  max-width: 100%;
+  max-height: calc(92vh - 90px);
+
+  object-fit: contain;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+
+/* =========================================
+   LÉGENDE
+========================================= */
+
+.raidplanLightboxCaption {
+  min-height: 24px;
+
+  margin-top: 14px;
+
+  color: #d0d2d5;
+
+  font-size: 14px;
+  text-align: center;
+}
+
+
+/* =========================================
+   FLÈCHES
+========================================= */
+
+.raidplanLightboxArrow {
+  position: absolute;
+  top: 50%;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 54px;
+  height: 54px;
+
+  padding: 0;
+
+  transform: translateY(-50%);
+
+  color: #ffffff;
+
+  font-size: 38px;
+  line-height: 1;
+
+  background-color: rgba(15, 15, 15, 0.8);
+
+  border: 1px solid #555;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.raidplanLightboxPrevious {
+  left: 10px;
+}
+
+.raidplanLightboxNext {
+  right: 10px;
+}
+
+.raidplanLightboxArrow:hover:not(:disabled) {
+  background-color: #292929;
+
+  border-color: var(--accent-color);
+}
+
+.raidplanLightboxArrow:disabled {
+  opacity: 0.2;
+
+  cursor: default;
+}
+
+
+/* =========================================
+   FERMETURE
+========================================= */
+
+.raidplanLightboxClose {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  z-index: 3;
+
+  width: 46px;
+  height: 46px;
+
+  color: #fc6161;
+  
+
+  font-size: 34px;
+  line-height: 1;
+
+  background-color: rgba(15, 15, 15, 0.8);
+
+  border: 1px solid #555;
+  border-color: #fc6161;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.raidplanLightboxClose:hover {
+  color: red;
+
+  border-color: red;
+}
+
+
+/* =========================================
+   POINTS
+========================================= */
+
+.raidplanLightboxDots {
+  position: absolute;
+
+  bottom: 0;
+  left: 50%;
+
+  display: flex;
+
+  gap: 9px;
+
+  transform: translateX(-50%);
+}
+
+.raidplanLightboxDot {
+  width: 10px;
+  height: 10px;
+
+  padding: 0;
+
+  background-color: #555;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.raidplanLightboxDot.active {
+  background-color: var(--accent-color);
+
+  transform: scale(1.25);
+}
+
+
+/* =========================================
+   BLOQUER LE SCROLL
+========================================= */
+
+body.raidplanLightboxOpen {
+  overflow: hidden;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+  .raidplanLightbox {
+    padding: 12px;
+  }
+
+  .raidplanLightboxContent {
+    width: 100%;
+    height: 95vh;
+  }
+
+  .raidplanLightboxArrow {
+    width: 42px;
+    height: 42px;
+
+    font-size: 30px;
+  }
+
+  .raidplanLightboxPrevious {
+    left: 2px;
+  }
+
+  .raidplanLightboxNext {
+    right: 2px;
+  }
+
+  .raidplanLightboxClose {
+    top: 4px;
+    right: 4px;
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 28px;
+  }
+}
+
+.mechanicCard.important {
+  border-left-color: #eab308;
+}
+
+.mechanicCard.important .mechanicHeader h3::before {
+  content: "⚠";
+  margin-right: 8px;
+  color: #eab308;
+}

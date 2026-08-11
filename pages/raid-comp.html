@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <meta
+      name="description"
+      content="Créez et organisez votre composition de raid sur Illivium Tactics."
+    />
+
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/header.css" />
+    <link rel="stylesheet" href="../assets/css/raid-comp.css" />
+
+    <title>Composition de raid — Illivium Tactics</title>
+  </head>
+
+  <body>
+    <div id="header"></div>
+
+    <main>
+      <section class="raidCompSection">
+        <div class="raidCompToolbar">
+          <div
+            id="specPicker"
+            class="specPicker"
+            aria-label="Sélection des spécialisations"
+          ></div>
+
+          <div class="raidCompActions">
+            <button
+              id="saveRaidCompButton"
+              class="raidCompActionButton saveRaidCompButton"
+              type="button"
+            >
+              Sauvegarder
+            </button>
+
+            <button
+              id="copyRaidCompButton"
+              class="raidCompActionButton copyRaidCompButton"
+              type="button"
+            >
+              Copier le lien
+            </button>
+
+            <button
+              id="resetRaidCompButton"
+              class="raidCompActionButton resetRaidCompButton"
+              type="button"
+            >
+              Réinitialiser
+            </button>
+          </div>
+        </div>
+
+        <p
+          id="raidCompMessage"
+          class="raidCompMessage"
+          aria-live="polite"
+        ></p>
+
+        <section class="raid">
+          <div
+            id="groupsWrapper"
+            class="groupsWrapper"
+          ></div>
+
+          <aside class="raidStats">
+            <section class="statsCard">
+              <div class="statsCardHeader">
+                <h3>Composition</h3>
+
+                <strong
+                  id="playerCount"
+                  class="playerCount"
+                >
+                  0 / 40
+                </strong>
+              </div>
+
+              <div class="roleStat">
+                <span class="roleStatLabel">Tanks</span>
+                <strong id="tankCount" class="roleStatValue">0</strong>
+              </div>
+
+              <div class="roleStat">
+                <span class="roleStatLabel">Heals</span>
+                <strong id="healCount" class="roleStatValue">0</strong>
+              </div>
+
+              <div class="roleStat">
+                <span class="roleStatLabel">Mêlées</span>
+                <strong id="mdpsCount" class="roleStatValue">0</strong>
+              </div>
+
+              <div class="roleStat">
+                <span class="roleStatLabel">Distances</span>
+                <strong id="rdpsCount" class="roleStatValue">0</strong>
+              </div>
+            </section>
+
+            <section class="statsCard">
+              <h3>Classes</h3>
+
+              <div id="classCounts"></div>
+            </section>
+          </aside>
+        </section>
+
+        <section class="raidSpells">
+          <article class="spellCategory">
+            <h3>Buffs</h3>
+
+            <div
+              id="buffSpellList"
+              class="spellList"
+            ></div>
+          </article>
+
+          <article class="spellCategory">
+            <h3>Défensifs</h3>
+
+            <div
+              id="defensiveSpellList"
+              class="spellList"
+            ></div>
+          </article>
+
+          <article class="spellCategory">
+            <h3>Utilitaires</h3>
+
+            <div
+              id="utilitySpellList"
+              class="spellList"
+            ></div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="../assets/js/loadComponents.js"></script>
+
+    <script>
+      loadComponent(
+        "#header",
+        "../components/header.html",
+        "../",
+      );
+    </script>
+
+    <script src="../assets/js/raid-comp.js"></script>
+  </body>
+</html>

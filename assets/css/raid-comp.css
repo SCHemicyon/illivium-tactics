@@ -1,0 +1,726 @@
+/* =========================================
+   PAGE
+========================================= */
+
+.raidCompSection {
+  display: flex;
+  flex-direction: column;
+
+  width: min(1800px, calc(100% - 32px));
+  min-height: calc(100vh - 70px);
+
+  margin: 0 auto;
+  padding: 1rem;
+
+  gap: 1rem;
+
+  color: #f2f2f2;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* =========================================
+   ZONE SUPÉRIEURE
+========================================= */
+
+.raidCompToolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+
+  gap: 1rem;
+}
+
+/* =========================================
+   PALETTE DES SPÉCIALISATIONS
+========================================= */
+
+.specPicker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  width: 100%;
+
+  gap: 0.5rem;
+}
+
+.classSection {
+  flex-shrink: 0;
+
+  padding: 0.25rem;
+
+  background-color: #181818;
+
+  border: 3px solid;
+  border-radius: 8px;
+}
+
+.specList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.35rem;
+}
+
+.specButton {
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  background: none;
+
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease,
+    filter 150ms ease;
+}
+
+.specButton:hover {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+.specButton:focus-visible {
+  outline: 2px solid goldenrod;
+  outline-offset: 2px;
+}
+
+.specButton.dragging {
+  opacity: 0.55;
+}
+
+.specButton img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 5px;
+}
+
+/* =========================================
+   BARRE DES ACTIONS
+========================================= */
+
+.raidCompActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  width: 100%;
+
+  gap: 0.6rem;
+  padding-top: 0.9rem;
+
+  border-top: 1px solid #2f2f2f;
+}
+
+.raidCompActionButton {
+  min-height: 40px;
+  padding: 0.65rem 1rem;
+
+  color: #d9d9d9;
+  font-weight: 700;
+  white-space: nowrap;
+
+  background-color: #181818;
+
+  border: 1px solid #363636;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.raidCompActionButton:hover {
+  color: goldenrod;
+
+  background-color: #202020;
+  border-color: goldenrod;
+}
+
+.saveRaidCompButton {
+  color: #101010;
+
+  background-color: goldenrod;
+  border-color: goldenrod;
+}
+
+.saveRaidCompButton:hover {
+  color: #101010;
+
+  background-color: #e2b632;
+  border-color: #e2b632;
+}
+
+.resetRaidCompButton:hover {
+  color: #ff6262;
+  border-color: #ff6262;
+}
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.raidCompMessage {
+  display: none;
+
+  width: 100%;
+  min-height: 20px;
+  padding: 0.75rem 1rem;
+
+  color: #dddddd;
+  font-size: 0.9rem;
+
+  background-color: #181818;
+
+  border: 1px solid #2f2f2f;
+  border-radius: 8px;
+}
+
+.raidCompMessage:not(:empty) {
+  display: block;
+}
+
+.raidCompMessage.success {
+  color: #75c878;
+
+  border-color: rgba(117, 200, 120, 0.45);
+}
+
+.raidCompMessage.error {
+  color: #ff7070;
+
+  border-color: rgba(255, 112, 112, 0.45);
+}
+
+/* =========================================
+   LAYOUT PRINCIPAL
+========================================= */
+
+.raid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(700px, 1fr)
+    260px;
+
+  align-items: start;
+
+  width: 100%;
+
+  gap: 1rem;
+}
+
+/* =========================================
+   GROUPES
+========================================= */
+
+.groupsWrapper {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(340px, 1fr));
+
+  gap: 1rem;
+}
+
+.group {
+  min-width: 0;
+  padding: 0.75rem;
+
+  background-color: #181818;
+
+  border: 1px solid #2f2f2f;
+  border-radius: 12px;
+}
+
+.group h3 {
+  margin-bottom: 0.75rem;
+
+  color: goldenrod;
+
+  font-size: 1rem;
+  text-align: center;
+}
+
+.groupSlots {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+
+/* =========================================
+   EMPLACEMENTS
+========================================= */
+
+.slot {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 56px;
+
+  color: #777777;
+
+  background-color: #232323;
+
+  border: 2px solid #444444;
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.slot:hover {
+  background-color: #292929;
+}
+
+.slot.filled {
+  cursor: grab;
+}
+
+.slot.filled:active {
+  cursor: grabbing;
+}
+
+.slot.dragOver {
+  color: goldenrod;
+
+  background-color: #302a18;
+  border-color: goldenrod;
+}
+
+.slot.dragBlocked {
+  color: #ff7070;
+
+  background-color: #2b1b1b;
+  border-color: #a84040;
+
+  cursor: not-allowed;
+}
+
+/* =========================================
+   JOUEUR
+========================================= */
+
+.playerCard {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.playerName {
+  max-width: 140px;
+
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  cursor: text;
+}
+
+.playerInput {
+  min-width: 80px;
+  max-width: 140px;
+
+  padding: 0.2rem 0.4rem;
+
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+
+  background-color: #2b2b2b;
+
+  border: 1px solid goldenrod;
+  border-radius: 6px;
+
+  outline: none;
+}
+
+.playerInput:focus {
+  border-color: #e2b632;
+}
+
+/* =========================================
+   ICÔNES DES JOUEURS
+========================================= */
+
+.roleIcon {
+  position: absolute;
+  left: 8px;
+
+  width: 40px;
+  height: 40px;
+
+  object-fit: contain;
+}
+
+.specIcon {
+  position: absolute;
+  left: 56px;
+
+  width: 40px;
+  height: 40px;
+
+  object-fit: cover;
+
+  border-radius: 6px;
+}
+
+/* =========================================
+   SUPPRESSION
+========================================= */
+
+.removePlayer {
+  position: absolute;
+  right: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  padding: 0;
+
+  color: #888888;
+
+  font-size: 20px;
+  line-height: 1;
+
+  background: none;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition:
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.removePlayer:hover {
+  color: #ff5555;
+
+  transform: scale(1.15);
+}
+
+/* =========================================
+   STATISTIQUES
+========================================= */
+
+.raidStats {
+  position: sticky;
+  top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 260px;
+
+  gap: 1rem;
+}
+
+.statsCard {
+  padding: 1rem;
+
+  background-color: #181818;
+
+  border: 1px solid #2f2f2f;
+  border-radius: 12px;
+}
+
+.statsCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-bottom: 0.75rem;
+}
+
+.statsCard h3 {
+  color: goldenrod;
+}
+
+.playerCount {
+  color: #ffffff;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.roleStat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  min-height: 32px;
+
+  border-bottom: 1px solid #272727;
+}
+
+.roleStat:last-child {
+  border-bottom: none;
+}
+
+.roleStatLabel {
+  color: #bdbdbd;
+}
+
+.roleStatValue {
+  color: #ffffff;
+}
+
+#classCounts {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.35rem;
+
+  margin-top: 0.75rem;
+}
+
+.classCount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  min-height: 28px;
+}
+
+.classCountName {
+  font-weight: 600;
+}
+
+.classCountValue {
+  color: #ffffff;
+}
+
+/* =========================================
+   SORTS
+========================================= */
+
+.raidSpells {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  width: 100%;
+
+  gap: 1rem;
+}
+
+.spellCategory {
+  min-width: 0;
+  padding: 1rem;
+
+  background-color: #181818;
+
+  border: 1px solid #2f2f2f;
+  border-radius: 12px;
+}
+
+.spellCategory h3 {
+  margin-bottom: 0.75rem;
+
+  color: goldenrod;
+
+  text-align: center;
+}
+
+.spellList {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.4rem;
+}
+
+.spellItem {
+  display: flex;
+  align-items: center;
+
+  min-height: 28px;
+
+  gap: 0.5rem;
+}
+
+.spellPresent {
+  color: #4caf50;
+
+  font-weight: 700;
+}
+
+.spellMissing {
+  color: #666666;
+}
+
+/* =========================================
+   RESPONSIVE : PETITS ORDINATEURS
+========================================= */
+
+@media (max-width: 1500px) {
+  .raid {
+    grid-template-columns: 1fr;
+  }
+
+  .raidStats {
+    position: static;
+
+    display: grid;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    width: 100%;
+  }
+}
+
+/* =========================================
+   RESPONSIVE : TABLETTES
+========================================= */
+
+@media (max-width: 900px) {
+  .raidCompSection {
+    width: calc(100% - 20px);
+
+    padding: 0.75rem;
+  }
+
+  .groupsWrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .raidStats {
+    grid-template-columns: 1fr;
+  }
+
+  .raidSpells {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   RESPONSIVE : MOBILES
+========================================= */
+
+@media (max-width: 600px) {
+  .raidCompSection {
+    width: 100%;
+
+    padding: 0.5rem;
+  }
+
+  .specPicker {
+    justify-content: center;
+  }
+
+  .raidCompActions {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    width: 100%;
+  }
+
+  .raidCompActionButton {
+    width: 100%;
+  }
+
+  .group,
+  .statsCard,
+  .spellCategory {
+    border-radius: 8px;
+  }
+
+  .slot {
+    height: 54px;
+  }
+
+  .roleIcon {
+    left: 6px;
+
+    width: 36px;
+    height: 36px;
+  }
+
+  .specIcon {
+    left: 48px;
+
+    width: 36px;
+    height: 36px;
+  }
+
+  .playerName {
+    max-width: 105px;
+
+    font-size: 16px;
+  }
+
+  .playerInput {
+    max-width: 105px;
+
+    font-size: 16px;
+  }
+}
+
+/* =========================================
+   RÉDUCTION DES ANIMATIONS
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .raidCompActionButton,
+  .specButton,
+  .slot,
+  .removePlayer {
+    transition: none;
+  }
+
+  .specButton:hover,
+  .removePlayer:hover {
+    transform: none;
+  }
+}

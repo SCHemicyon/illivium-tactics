@@ -359,6 +359,7 @@
 
 .bossHeader {
   position: relative;
+  isolation: isolate;
 
   display: grid;
   grid-template-columns: 120px minmax(0, 1fr);

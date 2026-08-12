@@ -230,7 +230,7 @@ function buildBossBannerPath(
   }
 
   return (
-    `/assets/images/boss-guide/` +
+    `../assets/images/boss-guide/` +
     `${raidId}/banners/${filename}`
   );
 }

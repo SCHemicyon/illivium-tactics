@@ -229,10 +229,10 @@ function buildBossBannerPath(
     return "";
   }
 
-  return (
-    `../assets/images/boss-guide/` +
-    `${raidId}/banners/${filename}`
-  );
+  return new URL(
+    `../assets/images/boss-guide/${raidId}/banners/${filename}`,
+    window.location.href,
+  ).href;
 }
 
 function buildRaidplanPath(

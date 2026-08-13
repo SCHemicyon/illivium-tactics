@@ -23,25 +23,29 @@
 
           "mechanics": [
             {
-              "name": "Amani agités",
+              "name": "Amani tourmenté",
+              "wowhead": "https://www.wowhead.com/fr/spell=1289919/amani-tourment%C3%A9?dd=15&ddsize=30",
               "types": ["adds", "control"],
               "roles": ["dps"],
               "text": "Ils apparaissent dans toute la salle et avancent vers le puits. Tant que leur bouclier est actif, ils sont immunisés au dégâts et au contrôles physiques. Utilisez des dégâts et contrôles magiques pour les regrouper et détruire leurs boucliers, puis tuez les."
             },
             {
-              "name": "Rite d'enroulement d'âmes",
+              "name": "Rituel entortillâme",
+              "wowhead": "https://www.wowhead.com/fr/spell=1288772/rituel-entortill%C3%A2me?dd=15&ddsize=30",
               "types": ["adds", "raid-damage"],
               "roles": ["all"],
               "text": "Chaque add qui atteint le puits donne de l'énergie à Nek'zali et augmente ses dégâts."
             },
             {
-              "name": "AoE au sol",
+              "name": "Echos angoissés",
+              "wowhead": "https://www.wowhead.com/fr/spell=1294846/%C3%A9chos-angoiss%C3%A9s?dd=15&ddsize=30",
               "types": ["aoe", "dodge"],
               "roles": ["all"],
               "text": "Plusieurs zones apparaissent pendant le combat. Esquivez-les."
             },
             {
-              "name": "Fantôme à dissiper",
+              "name": "Déchirure d'essence",
+              "wowhead":"https://www.wowhead.com/fr/spell=1287426/d%C3%A9chirure-d-essence?dd=15&ddsize=30",
               "types": ["dispel", "positioning"],
               "roles": ["dps", "heal"],
               "text": "Un joueur est poursuivi par un fantôme. Déplacez vous en bord de salle avant d'être dissipé. La dissipation repousse et laisse une zone au sol.",
@@ -51,13 +55,15 @@
               }
             },
             {
-              "name": "Trancher / Évider",
+              "name": "Frappes d'avidage",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1284110/frappes-d-%C3%A9vidage?dd=15&ddsize=30",
               "types": ["tank-swap"],
               "roles": ["tank"],
               "text": "Les attaques du boss appliquent un debuff de dégâts subis et de réduction des soins reçus. Échangez le boss avant d'avoir trop de charges."
             },
             {
               "name": "Barrage de possession",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1284103/barrage-de-possession?dd=15&ddsize=30",
               "types": ["raid-damage", "positioning"],
               "roles": ["tank"],
               "text": "Le tank ciblé s'éloigne du boss pour réduire les dégâts infligés au raid. Les autres joueurs quittent la trajectoire. Le tank utilise un défensif.",
@@ -76,7 +82,8 @@
 
           "mechanics": [
             {
-              "name": "Libération de l'écho",
+              "name": "Transfert d'âme",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1292248/transfert-d-%C3%A2me?dd=15&ddsize=30",
               "types": ["dodge"],
               "roles": ["all"],
               "text": "Un écho apparaît près d'un autel et canalise un rayon vers le puits. Évitez le rayon puis tuez l'écho lorsqu'il est libéré.",
@@ -86,7 +93,8 @@
               }
             },
             {
-              "name": "Soak en demi-groupe",
+              "name": "Bûcher dévorant",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1289855/b%C3%BBcher-d%C3%A9vorant?dd=15&ddsize=30",
               "types": ["soak", "positioning"],
               "roles": ["all"],
               "text": "Le premier demi-groupe place et partage l'explosion sur un gros tas de cadavres pour en détruire un maximum. Les joueurs restants reçoivent chacun une zone de flamme qui détruit les cadavres dans son rayon lorsqu'elle explose.",
@@ -106,13 +114,15 @@
 
           "mechanics": [
             {
-              "name": "Résurrection des Amani",
+              "name": "Réceptacle d'éveil",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1295263/r%C3%A9ceptacle-d-%C3%A9veil?dd=15&ddsize=30",
               "types": ["adds"],
               "roles": ["dps"],
               "text": "Regroupez et éliminez rapidement les adds ressuscités. Utilisez l'Héroïsme au début de la phase."
             },
             {
-              "name": "Zones mobiles",
+              "name": "Pas entrelacé",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1293497/pas-entrelac%C3%A9?dd=15&ddsize=30",
               "types": ["movement", "dodge"],
               "roles": ["all"],
               "text": "Les zones laissées par les dissipations se déplacent en indiquant leur trajectoire. Ne restez pas sur leur chemin."
@@ -156,12 +166,14 @@
           "mechanics": [
             {
               "name": "Domination d'Ula'tek",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1290193/domination-d-ula-tek?dd=15&ddsize=30",
               "types": ["positioning"],
               "roles": ["all"],
               "text": "Si les deux golems sont à moins de 40 mètres l'un de l'autre, les dégâts qu'ils reçoivent sont réduits de 99 %."
             },
             {
               "name": "Marque de sang / acide",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1284494/marque-d-acide?dd=15&ddsize=30",
               "types": ["raid-damage"],
               "roles": ["all"],
               "text": "Les joueurs situés à moins de 40 mètres d'un golem reçoivent toutes les 6 secondes un DOT cumulable d'une durée de 40 secondes."
@@ -176,18 +188,21 @@
               "mechanics": [
                 {
                   "name": "Heurt de renforcement",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1284458/heurt-de-renforcement?dd=15&ddsize=30",
                   "types": ["tank-swap"],
                   "roles": ["tank"],
                   "text": "Frappe la cible et lui inflige des dégâts physiques. Le golem gagne ensuite 15 % de dégâts supplémentaires jusqu'à ce qu'il frappe une cible différente."
                 },
                 {
                   "name": "Coagulation de venin",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1284257/contamination?dd=15&ddsize=30",
                   "types": ["adds", "raid-damage"],
                   "roles": ["dps", "heal"],
                   "text": "Fait apparaître un globule de venin qui inflige des dégâts à tout le groupe à chaque pulsation. Éliminez-le rapidement."
                 },
                 {
                   "name": "Gouttelettes toxiques",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1284434/gouttelettes-toxiques?dd=15&ddsize=30",
                   "types": ["positioning", "raid-damage"],
                   "roles": ["all"],
                   "text": "Des gouttelettes apparaissent dans la salle. Le groupe dispose de 16 secondes pour toutes les écraser. Chaque gouttelette restante provoque des dégâts supplémentaires sur le raid. Lorsqu'une gouttelette est écrasée, un laser apparaît entre elle et le boss : ne restez pas sur sa trajectoire.",
@@ -216,6 +231,7 @@
               "mechanics": [
                 {
                   "name": "Injection de venin sanglant",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1284208/venin-sanglant?dd=15&ddsize=30",
                   "types": ["tank-swap"],
                   "roles": ["tank"],
                   "text": "Frappe la cible pour lui infliger des dégâts physiques et applique un DOT cumulable qui inflige des dégâts d'ombre pendant 40 secondes."
@@ -223,12 +239,14 @@
 
                 {
                   "name": "Sang chancreux",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1284471/sang-chancreux?dd=15&ddsize=30",
                   "types": ["dispel"],
                   "roles": ["heal"],
                   "text": "Applique un DOT magique de 18 secondes infligeant des dégâts d'ombre. Dissipez-le."
                 },
                 {
                   "name": "Miasme instable",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1288232/miasme-instable?dd=15&ddsize=30",
                   "types": ["soak", "positioning", "ground-effect"],
                   "roles": ["all"],
                   "text": "Un joueur est ciblé et doit se placer au bord de la salle. Son groupe partage les dégâts du soak. Après l'explosion, les joueurs ayant participé disposent de 6 secondes pour se repositionner avant de déposer leurs flaques. Regroupez les flaques autant que possible sans les superposer afin de condamner le moins d'espace possible.",
@@ -260,6 +278,7 @@
           "mechanics": [
             {
               "name": "Symboles complémentaires",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1284590/toxines-h%C3%A9lico%C3%AFdales?dd=15&ddsize=30",
               "types": ["positioning"],
               "roles": ["all"],
               "text": "Chaque joueur reçoit un symbole. Entrez en collision avec un joueur possédant un symbole complémentaire afin de les combiner. L'objectif est de cumuler 4 globules de sang ou de venin. S'il reste un symbole sur un joueur à la fin des 30 secondes, c'est un wipe. Si tous les symboles sont résolus avant la fin du timer, l'intermission se termine immédiatement.",
@@ -321,12 +340,14 @@
           "mechanics": [
             {
               "name": "Crochet dégoulinant",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1280935/crochets-d%C3%A9goulinants?dd=15&ddsize=30",
               "types": ["tank-swap"],
               "roles": ["tank"],
               "text": "Tank buster qui augmente les dégâts physiques reçus de 100 % pendant 32 secondes."
             },
             {
               "name": "Écume pestilentielle",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1281907/%C3%A9cume-pestilentielle?dd=15&ddsize=30",
               "types": ["positioning"],
               "roles": ["all"],
               "text": "Plusieurs joueurs sont ciblés. Au bout de 6 secondes, des vagues de poison sont projetées dans les quatre directions cardinales. Positionnez-vous afin de ne pas toucher les autres joueurs, puis esquivez les vagues.",
@@ -343,12 +364,14 @@
             },
             {
               "name": "Catalyseur malveillant",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1282525/catalyseur-malveillant?dd=15&ddsize=30",
               "types": ["raid-damage"],
               "roles": ["all"],
               "text": "À la fin de la canalisation, le raid subit d'énormes dégâts. Utilisez un défensif."
             },
             {
               "name": "Infusion d'ombre / feu / sang",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1293968/infusion-d-ombre?dd=15&ddsize=30",
               "types": ["raid-damage"],
               "roles": ["all"],
               "text": "Augmente de 200 % les dégâts des capacités élémentaires correspondantes et de 50 % les points de vie du globule élémentaire pendant 2 minutes. Cet effet est cumulable."
@@ -362,12 +385,14 @@
               "mechanics": [
                 {
                   "name": "Infection stygienne",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1294994/infection-stygienne?dd=15&ddsize=30",
                   "types": ["aoe", "raid-damage"],
                   "roles": ["heal", "all"],
                   "text": "Fait apparaître de nombreuses zones au sol à esquiver et applique un bouclier d'absorption de soins à plusieurs joueurs."
                 },
                 {
                   "name": "Globule d'ombre",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1286737/%C3%A9jection-ombreuse?dd=15&ddsize=30#used-by-npc",
                   "types": ["adds", "control", "movement"],
                   "roles": ["all"],
                   "text": "Globule rapide et sensible aux contrôles. Tant qu'il est en vie, il inflige des dégâts aux joueurs proches et réduit leur vitesse de déplacement. Cet effet est cumulable. À sa mort, il fait apparaître des zones sous les joueurs : esquivez-les."
@@ -381,6 +406,7 @@
               "mechanics": [
                 {
                   "name": "Infection explosive",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1295209/%C3%A9clatement-caustique?dd=15&ddsize=30",
                   "types": ["positioning", "raid-damage"],
                   "roles": ["all"],
                   "text": "Un joueur est ciblé. À l'explosion, le raid subit des dégâts en fonction de sa distance avec ce joueur. Éloignez-vous de la cible.",
@@ -397,6 +423,7 @@
                 },
                 {
                   "name": "Globule de feu",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1285979/afflux-caustique?dd=15&ddsize=30",
                   "types": ["adds", "raid-damage"],
                   "roles": ["all"],
                   "text": "Globule lent. Tant qu'il est en vie, il inflige des dégâts de feu toutes les 3 secondes. À sa mort, il applique un DOT de 4 secondes à tous les joueurs. Évitez de tuer les deux globules en même temps."
@@ -410,6 +437,7 @@
               "mechanics": [
                 {
                   "name": "Infection siphonnante",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1299941/infection-siphonnante?dd=15&ddsize=30",
                   "types": ["soak", "positioning"],
                   "roles": ["all"],
                   "text": "Un joueur reçoit une zone autour de lui et ses soins reçus sont réduits de 100 %. Les points de vie des joueurs présents dans le cercle sont ponctionnés afin de maintenir la cible en vie.",
@@ -426,6 +454,7 @@
                 },
                 {
                   "name": "Globule de sang",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1286631/caillot-fragment%C3%A9?dd=15&ddsize=30",
                   "types": ["adds", "raid-damage"],
                   "roles": ["heal", "all"],
                   "text": "Globule lent et immunisé aux contrôles. À sa mort, il se divise en deux globules et applique un bouclier d'absorption de soins à tous les joueurs. Chaque nouveau globule peut à son tour se subdiviser et appliquer des stacks supplémentaires."
@@ -472,18 +501,21 @@
           "mechanics": [
             {
               "name": "Présence malveillante",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1295449/pr%C3%A9sence-malveillante?dd=15&ddsize=30",
               "types": ["raid-damage"],
               "roles": ["heal"],
               "text": "Inflige des dégâts ambiants au raid pendant toute la durée du combat."
             },
             {
               "name": "Regard malfaisant",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1292388/regard-malfaisant?dd=15&ddsize=30",
               "types": ["aoe", "dodge"],
               "roles": ["all"],
               "text": "Plusieurs zones apparaissent au sol. Esquivez-les."
             },
             {
               "name": "Ascension renforcée",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1292780/ascension-finale?dd=15&ddsize=30",
               "types": [],
               "roles": [],
               "text": "Mor'zahi accumule de l'énergie pendant le combat. S'il atteint 100 points d'énergie, c'est un wipe."
@@ -497,12 +529,14 @@
               "mechanics": [
                 {
                   "name": "Flammes de glace",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1286921/flammes-de-glace?dd=15&ddsize=30",
                   "types": ["interrupt", "dispel"],
                   "roles": ["all"],
                   "text": "Sort à interrompre. S'il est lancé, il inflige de lourds dégâts à sa cible puis applique un DOT de 12 secondes qui réduit également sa vitesse de déplacement de 50 %. Le DOT peut être dissipé avec un dispell magique."
                 },
                 {
                   "name": "Nova de transfert",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1296025/nova-de-transfert?dd=15&ddsize=30",
                   "types": ["positioning", "raid-damage"],
                   "roles": ["all"],
                   "text": "Iku se téléporte sur un joueur et inflige des dégâts en fonction de sa distance avec les autres joueurs. Pour optimiser le changement de cible, le joueur ciblé peut se positionner sur le boss actuellement joué seul afin de signaler au groupe qu'il faut changer de cible.",
@@ -519,12 +553,14 @@
                 },
                 {
                   "name": "Éclats lacérants",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1295854/%C3%A9clats-lac%C3%A9rants?dd=15&ddsize=30",
                   "types": ["tank-swap"],
                   "roles": ["tank"],
                   "text": "Projette des éclats sur sa cible. Chaque éclat augmente les dégâts subis de 50 % pendant 1 minute et 18 secondes. Effectuez un tank swap avant d'accumuler trop de stacks."
                 },
                 {
                   "name": "Gerbe de givrefeu",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1295893/gerbe-de-givrefeu?dd=15&ddsize=30",
                   "important": true,
                   "types": ["positioning", "ground-effect", "raid-damage"],
                   "roles": ["all"],
@@ -546,24 +582,28 @@
               "mechanics": [
                 {
                   "name": "Carapaces tournoyantes",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1296061/carapace-tournoyante?dd=15&ddsize=30",
                   "types": ["dodge"],
                   "roles": ["all"],
                   "text": "Lance 3 carapaces dans un cône devant lui. Un joueur touché est étourdi pendant 4 secondes."
                 },
                 {
                   "name": "Aura d'unité",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1297646/d%C3%A9fense-conjointe?dd=15&ddsize=30",
                   "types": ["positioning"],
                   "roles": ["all"],
                   "text": "Si Nama est trop proche des deux autres boss, les dégâts qu'ils subissent sont réduits de 99 %. Les Tortollans doivent rester séparés pendant tout le combat."
                 },
                 {
                   "name": "Frappes assurées",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1291930/frappes-assur%C3%A9es?dd=15&ddsize=30",
                   "types": ["tank-swap"],
                   "roles": ["tank"],
                   "text": "Chaque attaque contre sa cible augmente les dégâts de Nama de 4 % pendant 1 minute. Effectuez régulièrement un tank swap."
                 },
                 {
                   "name": "Collision puissante",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1296092/collision-puissante?dd=15&ddsize=30",
                   "important": true,
                   "types": ["soak", "positioning"],
                   "roles": ["all"],
@@ -588,12 +628,14 @@
               "mechanics": [
                 {
                   "name": "Lancer de camelote",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1291933/lancer-de-camelote?dd=15&ddsize=30",
                   "types": ["raid-damage"],
                   "roles": ["all"],
                   "text": "Gebbo libère des caisses en bois dans toute la salle. Marcher sur une caisse la détruit, applique un saignement cumulable au joueur et inflige également des dégâts à tout le raid. Une caisse peut faire apparaître un poisson : cliquez dessus pour le récupérer. Utilisez ensuite l'extra bouton sur l'un des trois Tortollans afin de réinitialiser l'énergie de Mor'zahi. Le Tortollan assommé récupère alors une capacité supplémentaire."
                 },
                 {
                   "name": "Surprise explosive",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1297625/surprise-explosive?dd=15&ddsize=30",
                   "important": true,
                   "types": ["positioning", "ground-effect", "raid-damage"],
                   "roles": ["all"],
@@ -602,10 +644,8 @@
                   "plan": {
                     "title": "Surprise explosive",
                     "slides": [
-                      
-                        "lost-explorers-surprise-explosive-1.png","lost-explorers-surprise-explosive-2.png"
-                        
-                      
+                      "lost-explorers-surprise-explosive-1.png",
+                      "lost-explorers-surprise-explosive-2.png"
                     ]
                   }
                 }
@@ -628,237 +668,496 @@
       }
     },
     {
-  "id": "sszorak",
-  "name": "Sszorak",
-  "image": "sszorak-icon.jpg",
-  "banner": "sszorak-banner.webp",
+      "id": "sszorak",
+      "name": "Sszorak",
+      "image": "sszorak-icon.jpg",
+      "banner": "sszorak-banner.webp",
 
-  "meta": {
-    "combat": "Monocible",
-    "heroism": "Pull"
-  },
+      "meta": {
+        "combat": "Monocible",
+        "heroism": "Pull"
+      },
 
-  "warning": "Ne vous faites pas repousser en dehors de la plateforme.",
+      "warning": "Ne vous faites pas repousser en dehors de la plateforme.",
 
-  "summary": "Le combat repose principalement sur la gestion des déplacements, des projections et du placement des zones au sol. Les zones laissées par Déferlement venimeux doivent être positionnées en prévision de l'intermission afin de pouvoir les utiliser pour revenir vers le centre de la plateforme.",
+      "summary": "Le combat repose principalement sur la gestion des déplacements, des projections et du placement des zones au sol. Les zones laissées par Déferlement venimeux doivent être positionnées en prévision de l'intermission afin de pouvoir les utiliser pour revenir vers le centre de la plateforme.",
 
-  "phases": [
-    {
-      "name": "Phase 1",
-
-      "mechanics": [
+      "phases": [
         {
-          "name": "Présence d'Ula'tek",
-          "types": ["raid-damage"],
-          "roles": ["heal"],
-          "text": "Inflige des dégâts ambiants pendant toute la durée du combat."
-        },
-
-        {
-          "name": "Ravage",
-          "types": ["tank-swap", "frontal"],
-          "roles": ["tank"],
-          "text": "Frontal tank à placer en dehors du raid. Chaque Ravage augmente les dégâts du prochain Ravage de 300 %, nécessitant un swap tank."
-        },
-
-        {
-          "name": "Estropier",
-          "types": ["tank-swap", "frontal", "soak"],
-          "roles": ["tank", "all"],
-          "text": "Frontal tank dont les dégâts sont répartis entre tous les joueurs présents dans la zone. Placez-le dans le raid et effectuez le swap tank nécessaire.",
-
-          "plan": {
-            "title": "Ravage / Estropier",
-            "slides": [
-              "sszorak-estropier-1.png",
-              "sszorak-estropier-2.png"
-            ]
-          }
-        },
-
-        {
-          "name": "Tempête",
-          "types": ["dodge", "movement"],
-          "roles": ["all"],
-          "text": "Sszorak projette des tornades dans toutes les directions. Les joueurs touchés subissent un DOT de poison et un ralentissement."
-        },
-
-        {
-          "name": "Vents de travers déchaînés",
-          "types": ["positioning", "movement"],
-          "roles": ["all"],
-          "text": "Plusieurs joueurs sont ciblés par une zone et seront projetés dans la direction indiquée par leur flèche. Alignez-vous avec une flèche qui projette dans la direction opposée afin de nullifier la mécanique.",
-
-          "plan": {
-            "title": "Vents de travers déchaînés",
-            "slides": [
-              "sszorak-vents-de-travers.png"
-            ]
-          }
-        },
-
-        {
-          "name": "Déferlement venimeux",
-          "types": ["positioning", "ground-effect", "movement"],
-          "roles": ["all"],
-          "text": "Au bout de 8s, le joueur ciblé dépose une zone au sol. Si un joueur entre en contact avec cette zone, tous les joueurs sont repoussés dans la direction opposée au point d'impact. Positionnez les zones en prévision de l'intermission.",
-
-          "plan": {
-            "title": "Déferlement venimeux",
-            "slides": [
-              "sszorak-deferlement-venimeux-1.png",
-              "sszorak-deferlement-venimeux-2.png"
-            ]
-          }
-          
-        }
-        
-            
-        
-      ]
-    },
-
-    {
-      "name": "Intermission",
-      "type": "intermission",
-
-      "description": "Des rafales de vent provenant de différents endroits de la salle tentent d'éjecter les joueurs de la plateforme.",
-
-      "mechanics": [
-        {
-          "name": "Rafales de vent",
-          "types": ["movement", "positioning"],
-          "roles": ["all"],
-          "text": "Utilisez vos CD de déplacement pour résister un maximum aux rafales, puis déclenchez les différentes zones de Déferlement venimeux afin d'être renvoyés vers le milieu de la salle. Pensez à déclencher la dernière zone avant qu'elle ne se déclenche automatiquement.",
-
-          "plan": {
-            "title": "Intermission",
-            "slides": [
-              "sszorak-intermission-1.png",
-              "sszorak-intermission-2.png",
-              "sszorak-intermission-3.png"
-            ]
-          }
-        }
-      ],
-      "note" : "Sszorak subis 25% de dégâts supplémentaire pendant toute l'intermission"
-    }
-  ],
-
-  "roles": {
-    "tank": "Placez Ravage en dehors du raid, Estropier dans le raid et effectuez les swaps tank nécessaires.",
-    "heal": "Anticipez les dégâts ambiants permanents de Présence d'Ula'tek et les dégâts liés aux différentes projections et tornades.",
-    "dps": "Évitez les tornades et respectez les placements afin de ne pas provoquer de projection dangereuse pour le groupe.",
-    "all": "Placez correctement les zones de Déferlement venimeux, utilisez-les pendant l'intermission pour revenir vers le centre et ne vous faites jamais repousser hors de la plateforme."
-  },
-
-  "video": {
-    "provider": "youtube",
-    "id": "VIhxMqTXL6Q"
-  }
-},
-    {
-  "id": "twin-fangs",
-  "name": "Twin Fangs",
-  "image": "twin-fangs-icon.jpg",
-  "banner": "twin-fangs-banner.webp",
-
-  "meta": {
-    "combat": "2 boss + adds",
-    "heroism": "Pull"
-  },
-
-  "warning": "Si vous cumulez 8 stacks de Venin éternel, vous mourrez.",
-
-  "summary": "Tuez les 2 boss simultanément. Le boss qui survit enrage et gagne 25 % de dégâts toutes les 4s. À 100 énergie, l'intermission commence.",
-
-  "phases": [
-    {
-      "name": "Phase 1",
-
-      "mechanics": [
-        {
-          "name": "Vapeur toxique",
-          "types": ["raid-damage"],
-          "roles": ["heal"],
-          "text": "Inflige des dégâts ambiants pendant toute la durée du combat."
-        }
-      ],
-
-      "columns": [
-        {
-          "title": "Ithraz",
-          "subtitle": "Serpent de sang",
+          "name": "Phase 1",
 
           "mechanics": [
             {
-              "name": "Brise-pierre",
-              "types": ["soak", "tank-swap"],
-              "roles": ["tank"],
-              "text": "Fait apparaître 3 zones successives à soak par le tank dans leur ordre d'apparition. Chaque soak applique une Fracture qui augmente les dégâts reçus. Effectuez un swap tank après la mécanique."
-            },
-
-            {
-              "name": "Ichor",
-              "types": ["positioning", "ground-effect", "raid-damage"],
-              "roles": ["all"],
-              "text": "Applique un debuff de 12s sur plusieurs joueurs. Plus la zone autour du joueur rétrécit, plus celui-ci subit de dégâts. À la fin du timer, le joueur dépose une flaque de sang à ses pieds."
-            ,"plan": {
-            "title": "Ichor",
-            "slides": [
-              "twin-fangs-ichor.png"
-            ]
-          }
-            
-            },
-
-            {
-              "name": "Festin féroce",
-              "important": true,
-              "types": ["soak", "raid-damage"],
-              "roles": ["all"],
-              "text": "Une zone apparaît sous le boss et explose 3 fois. Chaque explosion doit être soak par au moins 3 joueurs, retire 1 stack de Venin éternel et repousse les joueurs. Participer à un soak applique également un debuff qui augmente les dégâts du prochain Festin féroce de 800 %. Chaque joueur ne peut donc soak qu'une seule fois."
-            }
-          ]
-        },
-
-        {
-          "title": "Vexhul",
-          "subtitle": "Serpent de poison",
-
-          "mechanics": [
-            {
-              "name": "Déluge caustique",
-              "types": ["tank-swap", "aoe"],
-              "roles": ["tank", "all"],
-              "text": "Canalise sur le tank, le repousse et lui inflige des dégâts de nature. La canalisation applique également un debuff cumulable de 1min30 qui augmente les dégâts du prochain Déluge caustique de 10 %. Pendant toute la canalisation, Vexhul projette également des zones dans la salle qui font apparaître des Globules caustiques."
-            },
-
-            {
-              "name": "Globule caustique",
+              "name": "Présence d'Ula'tek",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1285961/pr%C3%A9sence-d-ula-tek?dd=15&ddsize=30",
               "types": ["raid-damage"],
-              "roles": ["all"],
-              "text": "Explose au bout de 10s et applique 1 stack de Venin éternel à tout le raid. Un joueur doit marcher sur le globule avant son explosion pour le détruire. Ce joueur récupère alors 1 stack de Venin éternel."
+              "roles": ["heal"],
+              "text": "Inflige des dégâts ambiants pendant toute la durée du combat."
             },
 
             {
-              "name": "Crachat corrosif",
-              "types": ["adds", "priority-target"],
-              "roles": ["dps"],
-              "text": "Des serpents apparaissent dans le bassin central et ciblent des joueurs afin de leur appliquer des stacks de Venin éternel. Tuez-les rapidement."
-            , "plan": {
-            "title": "Crachat corrosif",
-            "slides": [
-              "twin-fangs-crachat.png"
-            ]
-          }
+              "name": "Ravage",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1277002/ravage?dd=15&ddsize=30",
+              "types": ["tank-swap", "frontal"],
+              "roles": ["tank"],
+              "text": "Frontal tank à placer en dehors du raid. Chaque Ravage augmente les dégâts du prochain Ravage de 300 %, nécessitant un swap tank."
             },
 
             {
-              "name": "Remous des profondeurs",
+              "name": "Estropier",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1277027/estropier?dd=15&ddsize=30",
+              "types": ["tank-swap", "frontal", "soak"],
+              "roles": ["tank", "all"],
+              "text": "Frontal tank dont les dégâts sont répartis entre tous les joueurs présents dans la zone. Placez-le dans le raid et effectuez le swap tank nécessaire.",
+
+              "plan": {
+                "title": "Ravage / Estropier",
+                "slides": ["sszorak-estropier-1.png", "sszorak-estropier-2.png"]
+              }
+            },
+
+            {
+              "name": "Tempête",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1287072/temp%C3%AAte?dd=15&ddsize=30",
               "types": ["dodge", "movement"],
               "roles": ["all"],
-              "text": "Fait apparaître des vagues qui se déplacent en direction des boss. Évitez-les afin de ne pas récupérer de stack de Venin éternel."
+              "text": "Sszorak projette des tornades dans toutes les directions. Les joueurs touchés subissent un DOT de poison et un ralentissement."
+            },
+
+            {
+              "name": "Vents de travers déchaînés",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1285447/bourrasques-turbulentes?dd=15&ddsize=30",
+              "types": ["positioning", "movement"],
+              "roles": ["all"],
+              "text": "Plusieurs joueurs sont ciblés par une zone et seront projetés dans la direction indiquée par leur flèche. Alignez-vous avec une flèche qui projette dans la direction opposée afin de nullifier la mécanique.",
+
+              "plan": {
+                "title": "Vents de travers déchaînés",
+                "slides": ["sszorak-vents-de-travers.png"]
+              }
+            },
+
+            {
+              "name": "Déferlement venimeux",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1305959/d%C3%A9ferlement-venimeux?dd=15&ddsize=30",
+              "types": ["positioning", "ground-effect", "movement"],
+              "roles": ["all"],
+              "text": "Au bout de 8s, le joueur ciblé dépose une zone au sol. Si un joueur entre en contact avec cette zone, tous les joueurs sont repoussés dans la direction opposée au point d'impact. Positionnez les zones en prévision de l'intermission.",
+
+              "plan": {
+                "title": "Déferlement venimeux",
+                "slides": [
+                  "sszorak-deferlement-venimeux-1.png",
+                  "sszorak-deferlement-venimeux-2.png"
+                ]
+              }
+            }
+          ]
+        },
+
+        {
+          "name": "Intermission",
+          "type": "intermission",
+
+          "description": "Des rafales de vent provenant de différents endroits de la salle tentent d'éjecter les joueurs de la plateforme.",
+
+          "mechanics": [
+            {
+              "name": "Rafales de vent",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1285419/vents-de-travers-d%C3%A9cha%C3%AEn%C3%A9s?dd=15&ddsize=30",
+              "types": ["movement", "positioning"],
+              "roles": ["all"],
+              "text": "Utilisez vos CD de déplacement pour résister un maximum aux rafales, puis déclenchez les différentes zones de Déferlement venimeux afin d'être renvoyés vers le milieu de la salle. Pensez à déclencher la dernière zone avant qu'elle ne se déclenche automatiquement.",
+
+              "plan": {
+                "title": "Intermission",
+                "slides": [
+                  "sszorak-intermission-1.png",
+                  "sszorak-intermission-2.png",
+                  "sszorak-intermission-3.png"
+                ]
+              }
+            }
+          ],
+          "note": "Sszorak subis 25% de dégâts supplémentaire pendant toute l'intermission"
+        }
+      ],
+
+      "roles": {
+        "tank": "Placez Ravage en dehors du raid, Estropier dans le raid et effectuez les swaps tank nécessaires.",
+        "heal": "Anticipez les dégâts ambiants permanents de Présence d'Ula'tek et les dégâts liés aux différentes projections et tornades.",
+        "dps": "Évitez les tornades et respectez les placements afin de ne pas provoquer de projection dangereuse pour le groupe.",
+        "all": "Placez correctement les zones de Déferlement venimeux, utilisez-les pendant l'intermission pour revenir vers le centre et ne vous faites jamais repousser hors de la plateforme."
+      },
+
+      "video": {
+        "provider": "youtube",
+        "id": "VIhxMqTXL6Q"
+      }
+    },
+    {
+      "id": "twin-fangs",
+      "name": "Twin Fangs",
+      "image": "twin-fangs-icon.jpg",
+      "banner": "twin-fangs-banner.webp",
+
+      "meta": {
+        "combat": "2 boss + adds",
+        "heroism": "Pull"
+      },
+
+      "warning": "Si vous cumulez 8 stacks de Venin éternel, vous mourrez.",
+
+      "summary": "Tuez les 2 boss simultanément. Le boss qui survit enrage et gagne 25 % de dégâts toutes les 4s. À 100 énergie, l'intermission commence.",
+
+      "phases": [
+        {
+          "name": "Phase 1",
+
+          "mechanics": [
+            {
+              "name": "Vapeur toxique",
+              "wowhead" : "https://www.wowhead.com/fr/spell=1295049/vapeurs-toxiques?dd=15&ddsize=30",
+              "types": ["raid-damage"],
+              "roles": ["heal"],
+              "text": "Inflige des dégâts ambiants pendant toute la durée du combat."
+            }
+          ],
+
+          "columns": [
+            {
+              "title": "Ithraz",
+              "subtitle": "Serpent de sang",
+
+              "mechanics": [
+                {
+                  "name": "Brise-pierre",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1288538/brise-pierre?dd=15&ddsize=30",
+                  "types": ["soak", "tank-swap"],
+                  "roles": ["tank"],
+                  "text": "Fait apparaître 3 zones successives à soak par le tank dans leur ordre d'apparition. Chaque soak applique une Fracture qui augmente les dégâts reçus. Effectuez un swap tank après la mécanique."
+                },
+
+                {
+                  "name": "Ichor",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1290809/ichor-%C3%A9touffant?dd=15&ddsize=30",
+                  "types": ["positioning", "ground-effect", "raid-damage"],
+                  "roles": ["all"],
+                  "text": "Applique un debuff de 12s sur plusieurs joueurs. Plus la zone autour du joueur rétrécit, plus celui-ci subit de dégâts. À la fin du timer, le joueur dépose une flaque de sang à ses pieds.",
+                  "plan": {
+                    "title": "Ichor",
+                    "slides": ["twin-fangs-ichor.png"]
+                  }
+                },
+
+                {
+                  "name": "Festin féroce",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1290516/festin-f%C3%A9roce?dd=15&ddsize=30",
+                  "important": true,
+                  "types": ["soak", "raid-damage"],
+                  "roles": ["all"],
+                  "text": "Une zone apparaît sous le boss et explose 3 fois. Chaque explosion doit être soak par au moins 3 joueurs, retire 1 stack de Venin éternel et repousse les joueurs. Participer à un soak applique également un debuff qui augmente les dégâts du prochain Festin féroce de 800 %. Chaque joueur ne peut donc soak qu'une seule fois."
+                }
+              ]
+            },
+
+            {
+              "title": "Vexhul",
+              "subtitle": "Serpent de poison",
+
+              "mechanics": [
+                {
+                  "name": "Déluge caustique",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1289192/d%C3%A9luge-caustique?dd=15&ddsize=30",
+                  "types": ["tank-swap", "aoe"],
+                  "roles": ["tank", "all"],
+                  "text": "Canalise sur le tank, le repousse et lui inflige des dégâts de nature. La canalisation applique également un debuff cumulable de 1min30 qui augmente les dégâts du prochain Déluge caustique de 10 %. Pendant toute la canalisation, Vexhul projette également des zones dans la salle qui font apparaître des Globules caustiques."
+                },
+
+                {
+                  "name": "Globule caustique",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1289993/globule-caustique?dd=15&ddsize=30",
+                  "types": ["raid-damage"],
+                  "roles": ["all"],
+                  "text": "Explose au bout de 10s et applique 1 stack de Venin éternel à tout le raid. Un joueur doit marcher sur le globule avant son explosion pour le détruire. Ce joueur récupère alors 1 stack de Venin éternel."
+                },
+
+                {
+                  "name": "Crachat corrosif",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1291478/crachat-corrosif?dd=15&ddsize=30",
+                  "types": ["adds", "priority-target"],
+                  "roles": ["dps"],
+                  "text": "Des serpents apparaissent dans le bassin central et ciblent des joueurs afin de leur appliquer des stacks de Venin éternel. Tuez-les rapidement.",
+                  "plan": {
+                    "title": "Crachat corrosif",
+                    "slides": ["twin-fangs-crachat.png"]
+                  }
+                },
+
+                {
+                  "name": "Remous des profondeurs",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1290956/remous-des-profondeurs?dd=15&ddsize=30",
+                  "types": ["dodge", "movement"],
+                  "roles": ["all"],
+                  "text": "Fait apparaître des vagues qui se déplacent en direction des boss. Évitez-les afin de ne pas récupérer de stack de Venin éternel."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "name": "Intermission",
+          "type": "intermission",
+
+          "description": "Ithraz se téléporte dans un angle de la salle tandis que Vexhul se place dans le bassin central. Si tous les angles sont condamnés, c'est un wipe.",
+
+          "columns": [
+            {
+              "title": "Ithraz",
+              "subtitle": "Serpent de sang",
+
+              "mechanics": [
+                {
+                  "name": "Zones de sang",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1306872/orage-sanguin?dd=15&ddsize=30",
+                  "types": ["ground-effect", "movement"],
+                  "roles": ["all"],
+                  "text": "Ithraz expulse des zones au sol qui infligent des dégâts et ralentissent les joueurs."
+                }
+              ]
+            },
+
+            {
+              "title": "Vexhul",
+              "subtitle": "Serpent de poison",
+
+              "mechanics": [
+                {
+                  "name": "Laser rotatif",
+                  "wowhead" : "https://www.wowhead.com/fr/spell=1294293/flot-infect?dd=15&ddsize=30",
+                  "types": ["beam", "movement"],
+                  "roles": ["all"],
+                  "text": "Vexhul crache un laser qui tourne autour de la salle. Le sens de rotation du laser est indiqué par le sens de rotation des orbes autour de lui."
+                }
+              ]
+            }
+          ],
+          "mechanics": [
+            {
+              "name": " ",
+              "plan": {
+                "title": "Intermission",
+                "slides": ["twin-fangs-intermission.png"]
+              }
+            }
+          ]
+        }
+      ],
+
+      "roles": {
+        "tank": "Gérez les swaps après Brise-pierre et restez toujours en mêlée des boss.",
+        "heal": "Anticipez les dégâts ambiants de Vapeur toxique, les dégâts des soaks de Festin féroce et les dégâts liés aux stacks de Venin éternel.",
+        "dps": "Tuez les 2 boss simultanément, éliminez rapidement les serpents du bassin central et gérez les Globules caustiques avant leur explosion.",
+        "all": "Surveillez vos stacks de Venin éternel, répartissez correctement les soaks de Festin féroce et évitez les vagues ainsi que le laser pendant l'intermission."
+      },
+
+      "video": {
+        "provider": "youtube",
+        "id": "q5TZHqIxbHQ"
+      }
+    },
+    {
+  "id": "coiled-altar",
+  "name": "Coiled Altar",
+  "image": "coiled-altar-icon.jpg",
+  "banner": "coiled-altar-banner.webp",
+
+  "meta": {
+    "combat": "Boss + adds",
+    "heroism": "Intermission"
+  },
+
+  "summary": "On affronte successivement Zul'jan et Malacrass. Lorsque Malacrass meurt, l'intermission commence. Zul'jan récupère alors 2% de ses PV chaque seconde mais subit 100% de dégâts supplémentaires. Utilisez la BL et burstez-le afin de commencer la Phase 3 avec le moins de PV possible. On affronte ensuite Malacrass et Zul'jan simultanément jusqu'à la fin du combat.",
+
+  "phases": [
+    {
+      "name": "Phase 1",
+
+      "columns": [
+        {
+          "title": "Zul'jan",
+
+          "mechanics": [
+            {
+              "name": "Crochets du creuset",
+              "wowhead": "https://www.wowhead.com/fr/spell=1282487/crochets-de-l-autel-annel%C3%A9?dd=15&ddsize=30",
+              "types": ["ground-effect"],
+              "roles": ["all"],
+              "text": "Zul'jan canalise les Crochets de l'Autel annelé et fait apparaitre des zones de poison qui grandissent puis disparaissent. Évitez de rester dans ces zones.",
+
+              "plan": {
+                "title": "Crochets du creuset",
+                "slides": [
+                  "coiled-altar-crochets-du-creuset.png"
+                ]
+              }
+            },
+
+            {
+              "name": "Broyeur d'haches",
+              "wowhead": "https://www.wowhead.com/fr/spell=1283832/broyeur-d-hache?dd=15&ddsize=30",
+              "types": ["dodge"],
+              "roles": ["all"],
+              "text": "Zul'jan projette des haches à travers la salle. Esquivez les haches tant qu'elles sont présentes."
+            },
+
+            {
+              "name": "Crochet venin",
+              "wowhead": "https://www.wowhead.com/fr/spell=1282287/crochet-venin?dd=15&ddsize=30",
+              "types": ["dispel"],
+              "roles": ["heal"],
+              "text": "Une hache imbibée de venin rebondit entre plusieurs joueurs et leur applique un DOT de 14s. Dissipez les joueurs affectés."
+            },
+
+            {
+              "name": "Déluge toxique",
+              "wowhead": "https://www.wowhead.com/fr/spell=1282403/venin-amalgam%C3%A9?dd=15&ddsize=30",
+              "important": true,
+              "types": ["positioning", "raid-damage"],
+              "roles": ["all"],
+              "text": "Des Venins amalgamés apparaissent dans la salle et infligent régulièrement des dégâts au raid. Lorsqu'un joueur marche sur un globule, celui-ci s'attache à lui. Récupérez les orbes et regroupez-les afin de pouvoir en détruire un maximum avec le frontal tank.",
+
+              "plan": {
+                "title": "Déluge toxique",
+                "slides": [
+                  "coiled-altar-deluge-toxique-1.png",
+                  "coiled-altar-deluge-toxique-2.png"
+                ]
+              }
+            },
+
+            {
+              "name": "Section",
+              "wowhead": "https://www.wowhead.com/fr/spell=1299680/section?dd=15&ddsize=30",
+              "important": true,
+              "types": ["tank-swap", "frontal"],
+              "roles": ["tank"],
+              "text": "Zul'jan frappe dans un cône devant lui et augmente de 200% les dégâts du prochain Section reçus pendant 30s. Le frontal détruit également les Venins amalgamés. Placez-le sur les orbes regroupées pour en détruire un maximum, puis faites un swap tank. Chaque orbe détruite inflige des dégâts au raid.",
+
+              "plan": {
+                "title": "Section",
+                "slides": [
+                  "coiled-altar-section.png"
+                ]
+              }
+            },
+
+            {
+              "name": "Toxines des crochets jumeaux",
+              "wowhead": "https://www.wowhead.com/fr/spell=1300322/toxine-des-crochets-jumeaux?dd=15&ddsize=30",
+              "types": [],
+              "roles": ["tank"],
+              "text": "Les attaques de mêlée de Zul'jan consomment les stacks de Toxine des crochets jumeaux présents sur sa cible pour infliger des dégâts supplémentaires. Plus le tank possède de stacks, plus les prochaines attaques deviennent dangereuses."
+            },
+
+            {
+              "name": "Guillotine",
+              "wowhead": "https://www.wowhead.com/fr/spell=1283594/guillotine?dd=15&ddsize=30",
+              "types": ["soak", "mouvement"],
+              "roles": ["all"],
+              "text": "Zul'jan lance sa hache sur un joueur. Au moins 5 joueurs doivent se trouver dans la zone pour partager les dégâts. Chaque soak est effectué par une moitié du raid. A l'explosion, une énorme zone apprait. Utilisez un portail Démoniste ou des CD de mouvement pour en sortir rapidement",
+
+              "plan": {
+                "title": "Guillotine",
+                "slides": [
+                  "coiled-altar-guillotine-1.png",
+                  "coiled-altar-guillotine-2.png"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Phase 2",
+
+      "columns": [
+        {
+          "title": "Malacrass",
+
+          "mechanics": [
+            {
+              "name": "Marche de l'effroi",
+              "wowhead": "https://www.wowhead.com/fr/spell=1285643/marche-de-l-effroi?dd=15&ddsize=30",
+              "types": ["control"],
+              "roles": ["all"],
+              "text": "Malacrass prend le contrôle de plusieurs joueurs et leur applique un bouclier pendant qu'ils marchent vers le bord de la plateforme pour sauter dans le vide. Brisez rapidement leur bouclier pour libérer les joueurs. Lorsque le contrôle est supprimé, des Manifestations de l'effroi apparaissent."
+            },
+
+            {
+              "name": "Fixation déroutante",
+              "wowhead": "https://www.wowhead.com/fr/spell=1285911/fixation-d%C3%A9routante?dd=15&ddsize=30",
+              "types": ["positioning", "control"],
+              "roles": ["all"],
+              "text": "Chaque Manifestation de l'effroi fixe un joueur et avance vers lui uniquement lorsqu'il ne la regarde pas. Si elle atteint sa cible, le joueur est de nouveau contrôlé. Regroupez les fantômes afin qu'ils puissent être détruits ensemble avec le frontal tank.",
+
+              "plan": {
+                "title": "Fixation déroutante",
+                "slides": [
+                  "coiled-altar-fixation-deroutante-1.png",
+                  "coiled-altar-fixation-deroutante-2.png"
+                ]
+              }
+            },
+
+            {
+              "name": "Section d'âme",
+              "wowhead": "https://www.wowhead.com/fr/spell=1286620/section-d-%C3%A2me?dd=15&ddsize=30",
+              "types": ["tank-swap", "frontal"],
+              "roles": ["tank"],
+              "text": "Malacrass lance un frontal sur sa cible qui augmente de 200% les dégâts du prochain Section d'âme reçu et applique un DOT pendant 36s ainsi qu'Inhumage. Le frontal détruit également les Manifestations de l'effroi. Placez-le sur les fantômes regroupés puis effectuez un swap tank.",
+
+              "plan": {
+                "title": "Section d'âme",
+                "slides": [
+                  "coiled-altar-section-d-ame.png"
+                ]
+              }
+            },
+
+            {
+              "name": "Inhumage",
+              "wowhead": "https://www.wowhead.com/fr/spell=1286837/inhumage?dd=15&ddsize=30",
+              "types": ["movement"],
+              "roles": ["all"],
+              "text": "Votre âme est fragmentée et vous disposez de 11s pour récupérer tous vos Fragments d'âme en marchant dessus. Si tous les fragments ne sont pas récupérés avant la fin du timer, vous mourrez. Inhumage survient notamment après Section d'âme et lorsqu'un joueur est touché par l'explosion d'une Bombe obscure."
+            },
+
+            {
+              "name": "Crépuscule éternel",
+              "wowhead": "https://www.wowhead.com/fr/spell=1286918/cr%C3%A9puscule-%C3%A9ternel?dd=15&ddsize=30",
+              "types": ["interrupt"],
+              "roles": ["all"],
+              "text": "Malacrass commence une incantation de 15s protégée par un bouclier. Détruisez le bouclier afin de pouvoir interrompre Crépuscule éternel avant la fin de l'incantation."
+            },
+
+            {
+              "name": "Bombe obscure",
+              "wowhead": "https://www.wowhead.com/fr/spell=1286895/bombe-obscure?dd=15&ddsize=30",
+              "types": ["positioning"],
+              "roles": ["all"],
+              "text": "Plusieurs joueurs sont marqués pendant 5s puis explosent dans un rayon de 15m. Écartez-vous afin de ne pas toucher d'autres joueurs : toute personne touchée par l'explosion reçoit également Inhumage."
+            },
+
+            {
+              "name": "Entortillâme abandonné",
+              "wowhead": "https://www.wowhead.com/fr/spell=1286399/plainte-de-terreur?dd=15&ddsize=30",
+              "types": ["adds"],
+              "roles": ["all"],
+              "text": "L'Entortillâme abandonné incante Plainte de terreur pendant 7s. Si l'incantation arrive à son terme, les joueurs sont fear pendant 5s. Gérez rapidement l'add afin d'éviter que son incantation ne perturbe le raid."
             }
           ]
         }
@@ -869,65 +1168,46 @@
       "name": "Intermission",
       "type": "intermission",
 
-      "description": "Ithraz se téléporte dans un angle de la salle tandis que Vexhul se place dans le bassin central. Si tous les angles sont condamnés, c'est un wipe.",
+      "description": "Lorsque Malacrass meurt, Zul'jan entre en Régénération fantomatique pendant 35s. Utilisez la BL et burstez-le afin de commencer la Phase 3 avec le moins de PV possible.",
 
-      "columns": [
+      "mechanics": [
         {
-          "title": "Ithraz",
-          "subtitle": "Serpent de sang",
-
-          "mechanics": [
-            {
-              "name": "Zones de sang",
-              "types": ["ground-effect", "movement"],
-              "roles": ["all"],
-              "text": "Ithraz expulse des zones au sol qui infligent des dégâts et ralentissent les joueurs."
-            }
-          ]
+          "name": "Régénération fantomatique",
+          "wowhead": "https://www.wowhead.com/fr/spell=1304033/r%C3%A9g%C3%A9n%C3%A9ration-fantomatique?dd=15&ddsize=30",
+          "types": [],
+          "roles": ["all"],
+          "text": "Pendant 35s, Zul'jan récupère 2% de ses PV maximum chaque seconde mais subit 100% de dégâts supplémentaires. Alignez vos CD offensifs sur cette phase."
         },
 
         {
-          "title": "Vexhul",
-          "subtitle": "Serpent de poison",
-
-          "mechanics": [
-            {
-              "name": "Laser rotatif",
-              "types": ["beam", "movement"],
-              "roles": ["all"],
-              "text": "Vexhul crache un laser qui tourne autour de la salle. Le sens de rotation du laser est indiqué par le sens de rotation des orbes autour de lui."
-            }
-          ]
+          "name": "Occultation de l'esprit",
+          "wowhead": "https://www.wowhead.com/fr/spell=1287722/occultation-de-l-esprit?dd=15&ddsize=30",
+          "types": ["adds"],
+          "roles": ["all"],
+          "text": "Empêchez les esprits d'atteindre Zul'jan : chaque esprit qui le touche lui rend 3% de ses PV. Les fragments présents dans la salle peuvent être détruits en marchant dessus, ce qui inflige des dégâts au raid."
         }
-      ],
-      "mechanics": [{
-        "name": " ",
-      "plan": {
-            "title": "Intermission",
-            "slides": [
-              "twin-fangs-intermission.png"
-            ]
-          }}]
+      ]
+    },
+
+    {
+      "name": "Phase 3",
+
+      "description": "Zul'jan et Malacrass sont affrontés simultanément et conservent leurs capacités des Phases 1 et 2. Il n'y a désormais plus qu'un seul frontal tank qui cumule les effets de Section et Section d'âme : utilisez-le pour détruire à la fois les Venins amalgamés et les Manifestations de l'effroi."
     }
   ],
 
   "roles": {
-    "tank": "Gérez les swaps après Brise-pierre et restez toujours en mêlée des boss.",
-    "heal": "Anticipez les dégâts ambiants de Vapeur toxique, les dégâts des soaks de Festin féroce et les dégâts liés aux stacks de Venin éternel.",
-    "dps": "Tuez les 2 boss simultanément, éliminez rapidement les serpents du bassin central et gérez les Globules caustiques avant leur explosion.",
-    "all": "Surveillez vos stacks de Venin éternel, répartissez correctement les soaks de Festin féroce et évitez les vagues ainsi que le laser pendant l'intermission."
+    "tank": "Gérez les stacks et les swaps tank de Section et Section d'âme. Orientez les frontaux sur les Venins amalgamés ou les Manifestations de l'effroi afin de les détruire. En Phase 3, le frontal permet de gérer les 2 types de cibles simultanément.",
+    "heal": "Dissipez Crochet venin, surveillez les tanks lorsque les stacks de Toxine des crochets jumeaux augmentent et anticipez les dégâts de raid provoqués par la destruction des Venins amalgamés.",
+    "dps": "Libérez rapidement les joueurs contrôlés par Marche de l'effroi, gérez les Entortillâmes abandonnés et utilisez vos CD offensifs pendant l'intermission pour profiter des 100% de dégâts supplémentaires subis par Zul'jan.",
+    "all": "Évitez les haches et les zones au sol, respectez les groupes de Guillotine, regroupez correctement les Venins amalgamés et les Manifestations de l'effroi, puis récupérez rapidement vos Fragments d'âme lorsque vous êtes affecté par Inhumage."
   },
 
   "video": {
     "provider": "youtube",
-    "id": "q5TZHqIxbHQ"
+    "id": "N3DrsTj4NBg"
   }
 },
-    {
-      "id": "coiled-altar",
-      "name": "Coiled Altar",
-      "image": "coiled-altar-icon.jpg"
-    },
     {
       "id": "ulatek",
       "name": "Ula'tek",

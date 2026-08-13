@@ -3,30 +3,27 @@
   <head>
     <meta charset="UTF-8" />
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta
       name="description"
       content="Guides et stratégies des boss de raid sur Illivium Tactics."
     />
 
-    <link
-      rel="stylesheet"
-      href="../assets/css/base.css"
-    />
+    <link rel="stylesheet" href="../assets/css/base.css" />
 
-    <link
-      rel="stylesheet"
-      href="../assets/css/header.css"
-    />
+    <link rel="stylesheet" href="../assets/css/header.css" />
 
-    <link
-      rel="stylesheet"
-      href="../assets/css/boss-guide.css"
-    />
+    <link rel="stylesheet" href="../assets/css/boss-guide.css" />
+
+    <script>
+      const whTooltips = {
+        colorLinks: false,
+        iconizeLinks: true,
+        renameLinks: false,
+        iconSize: "medium",
+      };
+    </script>
 
     <title>Guide de boss — Illivium Tactics</title>
   </head>
@@ -45,33 +42,19 @@
         Boss du raid
       </button>
 
-      <aside
-        id="bossSidebar"
-        class="bossSidebar"
-      >
-        <p class="loadingMessage">
-          Chargement du raid...
-        </p>
+      <aside id="bossSidebar" class="bossSidebar">
+        <p class="loadingMessage">Chargement du raid...</p>
       </aside>
 
-      <article
-        id="bossGuideContent"
-        class="bossGuideContent"
-      >
-        <p class="loadingMessage">
-          Chargement du guide...
-        </p>
+      <article id="bossGuideContent" class="bossGuideContent">
+        <p class="loadingMessage">Chargement du guide...</p>
       </article>
     </main>
 
     <script src="../assets/js/loadComponents.js"></script>
 
     <script>
-      loadComponent(
-        "#header",
-        "../components/header.html",
-        "../",
-      );
+      loadComponent("#header", "../components/header.html", "../");
     </script>
 
     <script src="../assets/js/boss-guide.js"></script>

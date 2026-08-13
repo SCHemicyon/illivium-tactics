@@ -45,65 +45,42 @@ let currentBoss = null;
    INITIALISATION
 ========================================= */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  async () => {
-    initializeSidebarToggle();
+document.addEventListener("DOMContentLoaded", async () => {
+  initializeSidebarToggle();
 
-    try {
-      currentRaidId =
-        await resolveRaidId();
+  try {
+    currentRaidId = await resolveRaidId();
 
-      currentRaid =
-        await loadRaid(
-          currentRaidId,
-        );
+    currentRaid = await loadRaid(currentRaidId);
 
-      currentBoss =
-        resolveBoss(
-          currentRaid,
-        );
+    currentBoss = resolveBoss(currentRaid);
 
-      renderSidebar(
-        currentRaid,
-        currentBoss,
-      );
+    renderSidebar(currentRaid, currentBoss);
 
-      renderBossGuide(
-        currentBoss,
-      );
+    renderBossGuide(currentBoss);
 
-      initializeRaidplanCarousels();
-      initializeRaidplanLightbox();
+    initializeRaidplanCarousels();
+    initializeRaidplanLightbox();
 
-      document.title =
-        `${currentBoss.name} — Illivium Tactics`;
-    } catch (error) {
-      console.error(error);
+    document.title = `${currentBoss.name} — Illivium Tactics`;
+  } catch (error) {
+    console.error(error);
 
-      renderLoadingError(
-        error.message,
-      );
-    }
-  },
-);
+    renderLoadingError(error.message);
+  }
+});
 
 /* =========================================
    PARAMÈTRES D’URL
 ========================================= */
 
 function getUrlParameters() {
-  const parameters =
-    new URLSearchParams(
-      window.location.search,
-    );
+  const parameters = new URLSearchParams(window.location.search);
 
   return {
-    raidId:
-      parameters.get("raid"),
+    raidId: parameters.get("raid"),
 
-    bossId:
-      parameters.get("boss"),
+    bossId: parameters.get("boss"),
   };
 }
 
@@ -112,31 +89,22 @@ function getUrlParameters() {
 ========================================= */
 
 async function resolveRaidId() {
-  const { raidId } =
-    getUrlParameters();
+  const { raidId } = getUrlParameters();
 
   if (raidId) {
     return raidId;
   }
 
-  const response =
-    await fetch(
-      SITE_DATA_PATH,
-    );
+  const response = await fetch(SITE_DATA_PATH);
 
   if (!response.ok) {
-    throw new Error(
-      "Impossible de charger site.json.",
-    );
+    throw new Error("Impossible de charger site.json.");
   }
 
-  const siteData =
-    await response.json();
+  const siteData = await response.json();
 
   if (!siteData.currentRaid) {
-    throw new Error(
-      "Aucun raid actuel n’est défini dans site.json.",
-    );
+    throw new Error("Aucun raid actuel n’est défini dans site.json.");
   }
 
   return siteData.currentRaid;
@@ -147,27 +115,16 @@ async function resolveRaidId() {
 ========================================= */
 
 async function loadRaid(raidId) {
-  const response =
-    await fetch(
-      `${RAID_DATA_FOLDER}/${raidId}.json`,
-    );
+  const response = await fetch(`${RAID_DATA_FOLDER}/${raidId}.json`);
 
   if (!response.ok) {
-    throw new Error(
-      `Impossible de charger le raid ${raidId}.`,
-    );
+    throw new Error(`Impossible de charger le raid ${raidId}.`);
   }
 
-  const raid =
-    await response.json();
+  const raid = await response.json();
 
-  if (
-    !raid.name ||
-    !Array.isArray(raid.bosses)
-  ) {
-    throw new Error(
-      "Le fichier du raid possède une structure invalide.",
-    );
+  if (!raid.name || !Array.isArray(raid.bosses)) {
+    throw new Error("Le fichier du raid possède une structure invalide.");
   }
 
   return raid;
@@ -178,30 +135,22 @@ async function loadRaid(raidId) {
 ========================================= */
 
 function resolveBoss(raid) {
-  const { bossId } =
-    getUrlParameters();
+  const { bossId } = getUrlParameters();
 
   if (!bossId) {
     if (!raid.bosses[0]) {
-      throw new Error(
-        "Ce raid ne contient aucun boss.",
-      );
+      throw new Error("Ce raid ne contient aucun boss.");
     }
 
     return raid.bosses[0];
   }
 
-  const boss =
-    raid.bosses.find(
-      (currentBossData) =>
-        currentBossData.id ===
-        bossId,
-    );
+  const boss = raid.bosses.find(
+    (currentBossData) => currentBossData.id === bossId,
+  );
 
   if (!boss) {
-    throw new Error(
-      `Le boss ${bossId} est introuvable.`,
-    );
+    throw new Error(`Le boss ${bossId} est introuvable.`);
   }
 
   return boss;
@@ -211,20 +160,11 @@ function resolveBoss(raid) {
    CHEMINS D’IMAGES
 ========================================= */
 
-function buildBossIconPath(
-  raidId,
-  filename,
-) {
-  return (
-    `../assets/images/boss-guide/` +
-    `${raidId}/icons/${filename}`
-  );
+function buildBossIconPath(raidId, filename) {
+  return `../assets/images/boss-guide/` + `${raidId}/icons/${filename}`;
 }
 
-function buildBossBannerPath(
-  raidId,
-  filename,
-) {
+function buildBossBannerPath(raidId, filename) {
   if (!filename) {
     return "";
   }
@@ -235,93 +175,57 @@ function buildBossBannerPath(
   ).href;
 }
 
-function buildRaidplanPath(
-  raidId,
-  filename,
-) {
-  return (
-    `../assets/images/boss-guide/` +
-    `${raidId}/raidplans/${filename}`
-  );
+function buildRaidplanPath(raidId, filename) {
+  return `../assets/images/boss-guide/` + `${raidId}/raidplans/${filename}`;
 }
 
 /* =========================================
    SIDEBAR
 ========================================= */
 
-function renderSidebar(
-  raid,
-  activeBoss,
-) {
-  const sidebar =
-    document.querySelector(
-      "#bossSidebar",
-    );
+function renderSidebar(raid, activeBoss) {
+  const sidebar = document.querySelector("#bossSidebar");
 
   if (!sidebar) {
     return;
   }
 
-  const bossLinks =
-    raid.bosses
-      .map((boss) => {
-        const isActive =
-          boss.id ===
-          activeBoss.id;
+  const bossLinks = raid.bosses
+    .map((boss) => {
+      const isActive = boss.id === activeBoss.id;
 
-        const iconPath =
-          buildBossIconPath(
-            currentRaidId,
-            boss.image,
-          );
+      const iconPath = buildBossIconPath(currentRaidId, boss.image);
 
-        const href =
-          `boss-guide.html?raid=${encodeURIComponent(
-            currentRaidId,
-          )}&boss=${encodeURIComponent(
-            boss.id,
-          )}`;
+      const href = `boss-guide.html?raid=${encodeURIComponent(
+        currentRaidId,
+      )}&boss=${encodeURIComponent(boss.id)}`;
 
-        return `
+      return `
           <li class="bossSidebarItem">
             <a
-              class="bossSidebarLink ${
-                isActive
-                  ? "active"
-                  : ""
-              }"
+              class="bossSidebarLink ${isActive ? "active" : ""}"
               href="${href}"
-              ${
-                isActive
-                  ? 'aria-current="page"'
-                  : ""
-              }
+              ${isActive ? 'aria-current="page"' : ""}
             >
               <img
                 class="bossSidebarIcon"
-                src="${escapeAttribute(
-                  iconPath,
-                )}"
+                src="${escapeAttribute(iconPath)}"
                 alt=""
               />
 
               <span class="bossSidebarName">
-                ${escapeHtml(
-                  boss.name,
-                )}
+                ${escapeHtml(boss.name)}
               </span>
             </a>
           </li>
         `;
-      })
-      .join("");
+    })
+    .join("");
 
   sidebar.innerHTML = `
     <div class="bossSidebarHeader">
       <h2>
-        ${escapeHtml(
-          raid.name,
-        )}
+        ${escapeHtml(raid.name)}
       </h2>
 
       <p>
@@ -342,42 +246,21 @@ function renderSidebar(
 ========================================= */
 
 function initializeSidebarToggle() {
-  const toggleButton =
-    document.querySelector(
-      "#sidebarToggleButton",
-    );
+  const toggleButton = document.querySelector("#sidebarToggleButton");
 
-  const sidebar =
-    document.querySelector(
-      "#bossSidebar",
-    );
+  const sidebar = document.querySelector("#bossSidebar");
 
-  if (
-    !toggleButton ||
-    !sidebar
-  ) {
+  if (!toggleButton || !sidebar) {
     return;
   }
 
-  toggleButton.addEventListener(
-    "click",
-    () => {
-      const isOpen =
-        sidebar.classList.toggle(
-          "open",
-        );
+  toggleButton.addEventListener("click", () => {
+    const isOpen = sidebar.classList.toggle("open");
 
-      toggleButton.setAttribute(
-        "aria-expanded",
-        String(isOpen),
-      );
+    toggleButton.setAttribute("aria-expanded", String(isOpen));
 
-      toggleButton.textContent =
-        isOpen
-          ? "Masquer les boss"
-          : "Boss du raid";
-    },
-  );
+    toggleButton.textContent = isOpen ? "Masquer les boss" : "Boss du raid";
+  });
 }
 
 /* =========================================
@@ -385,10 +268,7 @@ function initializeSidebarToggle() {
 ========================================= */
 
 function renderBossGuide(boss) {
-  const content =
-    document.querySelector(
-      "#bossGuideContent",
-    );
+  const content = document.querySelector("#bossGuideContent");
 
   if (!content) {
     return;
@@ -405,6 +285,8 @@ function renderBossGuide(boss) {
   ]
     .filter(Boolean)
     .join("");
+
+      loadWowheadTooltips();
 }
 
 /* =========================================
@@ -412,39 +294,21 @@ function renderBossGuide(boss) {
 ========================================= */
 
 function renderBossHeader(boss) {
-  const iconPath =
-    buildBossIconPath(
-      currentRaidId,
-      boss.image,
-    );
+  const iconPath = buildBossIconPath(currentRaidId, boss.image);
 
-  const bannerPath =
-    buildBossBannerPath(
-      currentRaidId,
-      boss.banner,
-    );
+  const bannerPath = buildBossBannerPath(currentRaidId, boss.banner);
 
-  const combatType =
-    boss.meta?.combat ||
-    boss.header?.combatType ||
-    "";
+  const combatType = boss.meta?.combat || boss.header?.combatType || "";
 
-  const heroism =
-    boss.meta?.heroism ||
-    boss.header?.heroism ||
-    "";
+  const heroism = boss.meta?.heroism || boss.header?.heroism || "";
 
   const bannerStyle = bannerPath
-    ? `style="--boss-banner-image: url('${escapeAttribute(
-        bannerPath,
-      )}');"`
+    ? `style="--boss-banner-image: url('${escapeAttribute(bannerPath)}');"`
     : "";
 
   return `
     <header
-      class="bossHeader ${
-        bannerPath ? "hasBanner" : ""
-      }"
+      class="bossHeader ${bannerPath ? "hasBanner" : ""}"
       ${bannerStyle}
     >
       <img
@@ -489,18 +353,13 @@ function renderBossHeader(boss) {
 ========================================= */
 
 function renderCriticalWarning(boss) {
-  const warning =
-    boss.warning ||
-    boss.criticalWarning;
+  const warning = boss.warning || boss.criticalWarning;
 
   if (!warning) {
     return "";
   }
 
-  if (
-    typeof warning ===
-    "string"
-  ) {
+  if (typeof warning === "string") {
     return `
       <section class="criticalWarning">
         <h2>
@@ -508,9 +367,7 @@ function renderCriticalWarning(boss) {
         </h2>
 
         <p>
-          ${escapeHtml(
-            warning,
-          )}
+          ${escapeHtml(warning)}
         </p>
       </section>
     `;
@@ -519,17 +376,11 @@ function renderCriticalWarning(boss) {
   return `
     <section class="criticalWarning">
       <h2>
-        ${escapeHtml(
-          warning.title ||
-          "Avertissement critique",
-        )}
+        ${escapeHtml(warning.title || "Avertissement critique")}
       </h2>
 
       <p>
-        ${escapeHtml(
-          warning.description ||
-          "",
-        )}
+        ${escapeHtml(warning.description || "")}
       </p>
     </section>
   `;
@@ -544,12 +395,9 @@ function renderBossSummary(boss) {
     return "";
   }
 
-  const summaryText =
-    Array.isArray(
-      boss.summary,
-    )
-      ? boss.summary.join(" ")
-      : boss.summary;
+  const summaryText = Array.isArray(boss.summary)
+    ? boss.summary.join(" ")
+    : boss.summary;
 
   return `
     <section class="bossSummary">
@@ -558,9 +406,7 @@ function renderBossSummary(boss) {
       </h2>
 
       <p>
-        ${escapeHtml(
-          summaryText,
-        )}
+        ${escapeHtml(summaryText)}
       </p>
     </section>
   `;
@@ -571,57 +417,33 @@ function renderBossSummary(boss) {
 ========================================= */
 
 function renderPhases(boss) {
-  if (
-    !Array.isArray(
-      boss.phases,
-    ) ||
-    boss.phases.length === 0
-  ) {
+  if (!Array.isArray(boss.phases) || boss.phases.length === 0) {
     return "";
   }
 
   return boss.phases
-    .map(
-      (
-        phase,
-        phaseIndex,
-      ) => {
-        const phaseClass =
-          phase.type ===
-          "intermission"
-            ? "intermission"
-            : "";
+    .map((phase, phaseIndex) => {
+      const phaseClass = phase.type === "intermission" ? "intermission" : "";
 
-        const mechanics =
-          getPhaseMechanics(
-            phase,
-          );
+      const mechanics = getPhaseMechanics(phase);
 
-        const columns =
-          getPhaseColumns(
-            phase,
-          );
+      const columns = getPhaseColumns(phase);
 
-        return `
+      return `
           <section
             class="bossPhase ${phaseClass}"
             data-phase-index="${phaseIndex}"
           >
             <header class="phaseHeader">
               <div class="phaseName">
-                ${escapeHtml(
-                  phase.name ||
-                  `Phase ${phaseIndex + 1}`,
-                )}
+                ${escapeHtml(phase.name || `Phase ${phaseIndex + 1}`)}
               </div>
 
               ${
                 phase.title
                   ? `
                     <h2>
-                      ${escapeHtml(
-                        phase.title,
-                      )}
+                      ${escapeHtml(phase.title)}
                     </h2>
                   `
                   : ""
@@ -631,9 +453,7 @@ function renderPhases(boss) {
                 phase.description
                   ? `
                     <p class="phaseDescription">
-                      ${escapeHtml(
-                        phase.description,
-                      )}
+                      ${escapeHtml(phase.description)}
                     </p>
                   `
                   : ""
@@ -645,15 +465,11 @@ function renderPhases(boss) {
                 ? `
                   <div class="phaseMechanics">
                     ${mechanics
-                      .map(
-                        (
+                      .map((mechanic, mechanicIndex) =>
+                        renderMechanic(
                           mechanic,
-                          mechanicIndex,
-                        ) =>
-                          renderMechanic(
-                            mechanic,
-                            `${phaseIndex}-${mechanicIndex}`,
-                          ),
+                          `${phaseIndex}-${mechanicIndex}`,
+                        ),
                       )
                       .join("")}
                   </div>
@@ -661,30 +477,20 @@ function renderPhases(boss) {
                 : ""
             }
 
-            ${
-              columns.length > 0
-                ? renderPhaseColumns(
-                    columns,
-                    phaseIndex,
-                  )
-                : ""
-            }
+            ${columns.length > 0 ? renderPhaseColumns(columns, phaseIndex) : ""}
 
             ${
               phase.note
                 ? `
                   <div class="phaseNote">
-                    ${escapeHtml(
-                      phase.note,
-                    )}
+                    ${escapeHtml(phase.note)}
                   </div>
                 `
                 : ""
             }
           </section>
         `;
-      },
-    )
+    })
     .join("");
 }
 
@@ -693,29 +499,17 @@ function renderPhases(boss) {
 ========================================= */
 
 function getPhaseMechanics(phase) {
-  if (
-    Array.isArray(
-      phase.mechanics,
-    )
-  ) {
+  if (Array.isArray(phase.mechanics)) {
     return phase.mechanics;
   }
 
-  if (
-    Array.isArray(
-      phase.blocks,
-    )
-  ) {
+  if (Array.isArray(phase.blocks)) {
     return phase.blocks.filter(
       (block) =>
-        block.type ===
-          "mechanic" ||
-        block.type ===
-          "rule" ||
-        block.type ===
-          "tip" ||
-        block.type ===
-          "warning",
+        block.type === "mechanic" ||
+        block.type === "rule" ||
+        block.type === "tip" ||
+        block.type === "warning",
     );
   }
 
@@ -727,71 +521,38 @@ function getPhaseMechanics(phase) {
 ========================================= */
 
 function getPhaseColumns(phase) {
-  if (
-    !Array.isArray(
-      phase.columns,
-    )
-  ) {
+  if (!Array.isArray(phase.columns)) {
     return [];
   }
 
   return phase.columns.filter(
-    (column) =>
-      column &&
-      Array.isArray(
-        column.mechanics,
-      ),
+    (column) => column && Array.isArray(column.mechanics),
   );
 }
 
-function renderPhaseColumns(
-  columns,
-  phaseIndex,
-) {
-  if (
-    !Array.isArray(columns) ||
-    columns.length === 0
-  ) {
+function renderPhaseColumns(columns, phaseIndex) {
+  if (!Array.isArray(columns) || columns.length === 0) {
     return "";
   }
 
   const columnsLayoutClass =
-    columns.length % 2 === 0
-      ? "phaseColumnsEven"
-      : "phaseColumnsOdd";
+    columns.length % 2 === 0 ? "phaseColumnsEven" : "phaseColumnsOdd";
 
   return `
     <div
       class="phaseColumns ${columnsLayoutClass}"
     >
       ${columns
-        .map(
-          (
-            column,
-            columnIndex,
-          ) =>
-            renderPhaseColumn(
-              column,
-              phaseIndex,
-              columnIndex,
-            ),
+        .map((column, columnIndex) =>
+          renderPhaseColumn(column, phaseIndex, columnIndex),
         )
         .join("")}
     </div>
   `;
 }
 
-function renderPhaseColumn(
-  column,
-  phaseIndex,
-  columnIndex,
-) {
-  const mechanics =
-    Array.isArray(
-      column.mechanics,
-    )
-      ? column.mechanics
-      : [];
+function renderPhaseColumn(column, phaseIndex, columnIndex) {
+  const mechanics = Array.isArray(column.mechanics) ? column.mechanics : [];
 
   return `
     <section
@@ -803,9 +564,7 @@ function renderPhaseColumn(
           column.title
             ? `
               <h3 class="phaseColumnTitle">
-                ${escapeHtml(
-                  column.title,
-                )}
+                ${escapeHtml(column.title)}
               </h3>
             `
             : ""
@@ -815,9 +574,7 @@ function renderPhaseColumn(
           column.subtitle
             ? `
               <p class="phaseColumnSubtitle">
-                ${escapeHtml(
-                  column.subtitle,
-                )}
+                ${escapeHtml(column.subtitle)}
               </p>
             `
             : ""
@@ -826,15 +583,11 @@ function renderPhaseColumn(
 
       <div class="phaseColumnMechanics">
         ${mechanics
-          .map(
-            (
+          .map((mechanic, mechanicIndex) =>
+            renderMechanic(
               mechanic,
-              mechanicIndex,
-            ) =>
-              renderMechanic(
-                mechanic,
-                `${phaseIndex}-column-${columnIndex}-${mechanicIndex}`,
-              ),
+              `${phaseIndex}-column-${columnIndex}-${mechanicIndex}`,
+            ),
           )
           .join("")}
       </div>
@@ -846,57 +599,44 @@ function renderPhaseColumn(
    MÉCANIQUE
 ========================================= */
 
-function renderMechanic(
-  mechanic,
-  mechanicKey,
-) {
+function renderMechanic(mechanic, mechanicKey) {
   const title =
-    mechanic.name ||
-    mechanic.label ||
-    mechanic.title ||
-    "Mécanique";
+    mechanic.name || mechanic.label || mechanic.title || "Mécanique";
+
+  const mechanicTitle = mechanic.wowhead
+    ? `
+      <a
+        href="${escapeAttribute(mechanic.wowhead)}"
+        class="wowheadSpell"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ${escapeHtml(title)}
+      </a>
+    `
+    : escapeHtml(title);
 
   const rawText =
-    mechanic.text ||
-    mechanic.description ||
-    mechanic.strategy ||
-    "";
+    mechanic.text || mechanic.description || mechanic.strategy || "";
 
-  const text =
-    Array.isArray(
-      rawText,
-    )
-      ? rawText.join(" ")
-      : rawText;
+  const text = Array.isArray(rawText) ? rawText.join(" ") : rawText;
 
   const badges = [
-    ...renderRoleBadges(
-      mechanic.roles,
-    ),
+    ...renderRoleBadges(mechanic.roles),
 
-    ...renderTypeBadges(
-      mechanic.types,
-    ),
+    ...renderTypeBadges(mechanic.types),
   ].join("");
 
-  const plan =
-    mechanic.plan ||
-    mechanic.raidplan ||
-    null;
+  const plan = mechanic.plan || mechanic.raidplan || null;
 
-  const importantClass =
-    mechanic.important
-      ? "important"
-      : "";
+  const importantClass = mechanic.important ? "important" : "";
 
   return `
     <article class="mechanicCard ${importantClass}">
       <header class="mechanicHeader">
         <h3>
-          ${escapeHtml(
-            title,
-          )}
-        </h3>
+  ${mechanicTitle}
+</h3>
 
         ${
           badges
@@ -913,22 +653,13 @@ function renderMechanic(
         text
           ? `
             <div class="mechanicText">
-              ${escapeHtml(
-                text,
-              )}
+              ${escapeHtml(text)}
             </div>
           `
           : ""
       }
 
-      ${
-        plan
-          ? renderRaidplan(
-              plan,
-              mechanicKey,
-            )
-          : ""
-      }
+      ${plan ? renderRaidplan(plan, mechanicKey) : ""}
     </article>
   `;
 }
@@ -943,33 +674,25 @@ function renderRoleBadges(roles) {
   }
 
   return roles.map((role) => {
-    const label =
-      ROLE_LABELS[role] ||
-      role;
+    const label = ROLE_LABELS[role] || role;
 
-    let className =
-      "role-all";
+    let className = "role-all";
 
     if (role === "tank") {
-      className =
-        "role-tank";
+      className = "role-tank";
     }
 
     if (role === "heal") {
-      className =
-        "role-heal";
+      className = "role-heal";
     }
 
     if (role === "dps") {
-      className =
-        "role-dps";
+      className = "role-dps";
     }
 
     return `
       <span class="mechanicBadge ${className}">
-        ${escapeHtml(
-          label,
-        )}
+        ${escapeHtml(label)}
       </span>
     `;
   });
@@ -985,15 +708,11 @@ function renderTypeBadges(types) {
   }
 
   return types.map((type) => {
-    const label =
-      TYPE_LABELS[type] ||
-      type;
+    const label = TYPE_LABELS[type] || type;
 
     return `
       <span class="mechanicBadge">
-        ${escapeHtml(
-          label,
-        )}
+        ${escapeHtml(label)}
       </span>
     `;
   });
@@ -1003,99 +722,57 @@ function renderTypeBadges(types) {
    RAIDPLAN
 ========================================= */
 
-function renderRaidplan(
-  plan,
-  mechanicKey,
-) {
-  const slides =
-    normalizeRaidplanSlides(
-      plan,
-    );
+function renderRaidplan(plan, mechanicKey) {
+  const slides = normalizeRaidplanSlides(plan);
 
   if (slides.length === 0) {
     return "";
   }
 
-  const safeMechanicKey =
-    String(
-      mechanicKey ||
-      "mechanic",
-    ).replace(
-      /[^a-zA-Z0-9-_]/g,
-      "",
-    );
+  const safeMechanicKey = String(mechanicKey || "mechanic").replace(
+    /[^a-zA-Z0-9-_]/g,
+    "",
+  );
 
-  const carouselId =
-    `raidplan-${safeMechanicKey}`;
+  const carouselId = `raidplan-${safeMechanicKey}`;
 
-  const firstSlide =
-    slides[0];
+  const firstSlide = slides[0];
 
-  const firstImagePath =
-    buildRaidplanPath(
-      currentRaidId,
-      firstSlide.image,
-    );
+  const firstImagePath = buildRaidplanPath(currentRaidId, firstSlide.image);
 
-  const singleSlideClass =
-    slides.length === 1
-      ? "singleSlide"
-      : "";
+  const singleSlideClass = slides.length === 1 ? "singleSlide" : "";
 
-  const dots =
-    slides
-      .map(
-        (
-          slide,
-          slideIndex,
-        ) => `
+  const dots = slides
+    .map(
+      (slide, slideIndex) => `
           <button
-            class="raidplanDot ${
-              slideIndex === 0
-                ? "active"
-                : ""
-            }"
+            class="raidplanDot ${slideIndex === 0 ? "active" : ""}"
             type="button"
             data-slide-index="${slideIndex}"
-            aria-label="Afficher le plan ${
-              slideIndex + 1
-            }"
-            ${
-              slideIndex === 0
-                ? 'aria-current="true"'
-                : ""
-            }
+            aria-label="Afficher le plan ${slideIndex + 1}"
+            ${slideIndex === 0 ? 'aria-current="true"' : ""}
           ></button>
         `,
-      )
-      .join("");
+    )
+    .join("");
 
   return `
     <section
       id="${carouselId}"
       class="raidplanBlock ${singleSlideClass}"
       data-current-slide="0"
-      data-slides="${escapeAttribute(
-        JSON.stringify(
-          slides,
-        ),
-      )}"
+      data-slides="${escapeAttribute(JSON.stringify(slides))}"
     >
       <header class="raidplanHeader">
         <h4>
-          ${escapeHtml(
-            plan.title ||
-            "Raidplan",
-          )}
+          ${escapeHtml(plan.title || "Raidplan")}
         </h4>
 
         ${
           plan.description
             ? `
               <p>
-                ${escapeHtml(
-                  plan.description,
-                )}
+                ${escapeHtml(plan.description)}
               </p>
             `
             : ""
@@ -1115,20 +792,12 @@ function renderRaidplan(
         <figure class="raidplanSlide">
           <img
             class="raidplanImage"
-            src="${escapeAttribute(
-              firstImagePath,
-            )}"
-            alt="${escapeAttribute(
-              firstSlide.alt ||
-              "",
-            )}"
+            src="${escapeAttribute(firstImagePath)}"
+            alt="${escapeAttribute(firstSlide.alt || "")}"
           />
 
           <figcaption class="raidplanCaption">
-            ${escapeHtml(
-              firstSlide.caption ||
-              "",
-            )}
+            ${escapeHtml(firstSlide.caption || "")}
           </figcaption>
         </figure>
 
@@ -1136,11 +805,7 @@ function renderRaidplan(
           class="raidplanArrow raidplanArrowNext"
           type="button"
           aria-label="Plan suivant"
-          ${
-            slides.length === 1
-              ? "disabled"
-              : ""
-          }
+          ${slides.length === 1 ? "disabled" : ""}
         >
           ❯
         </button>
@@ -1158,17 +823,10 @@ function renderRaidplan(
 ========================================= */
 
 function normalizeRaidplanSlides(plan) {
-  if (
-    Array.isArray(
-      plan.slides,
-    )
-  ) {
+  if (Array.isArray(plan.slides)) {
     return plan.slides
       .map((slide) => {
-        if (
-          typeof slide ===
-          "string"
-        ) {
+        if (typeof slide === "string") {
           return {
             image: slide,
             alt: "",
@@ -1177,23 +835,14 @@ function normalizeRaidplanSlides(plan) {
         }
 
         return {
-          image:
-            slide.image ||
-            "",
+          image: slide.image || "",
 
-          alt:
-            slide.alt ||
-            "",
+          alt: slide.alt || "",
 
-          caption:
-            slide.caption ||
-            "",
+          caption: slide.caption || "",
         };
       })
-      .filter(
-        (slide) =>
-          slide.image,
-      );
+      .filter((slide) => slide.image);
   }
 
   if (plan.image) {
@@ -1201,13 +850,9 @@ function normalizeRaidplanSlides(plan) {
       {
         image: plan.image,
 
-        alt:
-          plan.alt ||
-          "",
+        alt: plan.alt || "",
 
-        caption:
-          plan.caption ||
-          "",
+        caption: plan.caption || "",
       },
     ];
   }
@@ -1220,183 +865,87 @@ function normalizeRaidplanSlides(plan) {
 ========================================= */
 
 function initializeRaidplanCarousels() {
-  document
-    .querySelectorAll(
-      ".raidplanBlock",
-    )
-    .forEach((carousel) => {
-      const previousButton =
-        carousel.querySelector(
-          ".raidplanArrowPrevious",
-        );
+  document.querySelectorAll(".raidplanBlock").forEach((carousel) => {
+    const previousButton = carousel.querySelector(".raidplanArrowPrevious");
 
-      const nextButton =
-        carousel.querySelector(
-          ".raidplanArrowNext",
-        );
+    const nextButton = carousel.querySelector(".raidplanArrowNext");
 
-      const dots =
-        carousel.querySelectorAll(
-          ".raidplanDot",
-        );
+    const dots = carousel.querySelectorAll(".raidplanDot");
 
-      previousButton?.addEventListener(
-        "click",
-        () => {
-          changeCarouselSlide(
-            carousel,
-            getCarouselIndex(
-              carousel,
-            ) - 1,
-          );
-        },
-      );
+    previousButton?.addEventListener("click", () => {
+      changeCarouselSlide(carousel, getCarouselIndex(carousel) - 1);
+    });
 
-      nextButton?.addEventListener(
-        "click",
-        () => {
-          changeCarouselSlide(
-            carousel,
-            getCarouselIndex(
-              carousel,
-            ) + 1,
-          );
-        },
-      );
+    nextButton?.addEventListener("click", () => {
+      changeCarouselSlide(carousel, getCarouselIndex(carousel) + 1);
+    });
 
-      dots.forEach((dot) => {
-        dot.addEventListener(
-          "click",
-          () => {
-            changeCarouselSlide(
-              carousel,
-              Number(
-                dot.dataset
-                  .slideIndex,
-              ),
-            );
-          },
-        );
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        changeCarouselSlide(carousel, Number(dot.dataset.slideIndex));
       });
     });
+  });
 }
 
 /* =========================================
    CHANGEMENT DE SLIDE
 ========================================= */
 
-function changeCarouselSlide(
-  carousel,
-  requestedIndex,
-) {
-  const slides =
-    JSON.parse(
-      carousel.dataset.slides ||
-      "[]",
-    );
+function changeCarouselSlide(carousel, requestedIndex) {
+  const slides = JSON.parse(carousel.dataset.slides || "[]");
 
-  if (
-    requestedIndex < 0 ||
-    requestedIndex >=
-      slides.length
-  ) {
+  if (requestedIndex < 0 || requestedIndex >= slides.length) {
     return;
   }
 
-  const slide =
-    slides[requestedIndex];
+  const slide = slides[requestedIndex];
 
-  const image =
-    carousel.querySelector(
-      ".raidplanImage",
-    );
+  const image = carousel.querySelector(".raidplanImage");
 
-  const caption =
-    carousel.querySelector(
-      ".raidplanCaption",
-    );
+  const caption = carousel.querySelector(".raidplanCaption");
 
-  const previousButton =
-    carousel.querySelector(
-      ".raidplanArrowPrevious",
-    );
+  const previousButton = carousel.querySelector(".raidplanArrowPrevious");
 
-  const nextButton =
-    carousel.querySelector(
-      ".raidplanArrowNext",
-    );
+  const nextButton = carousel.querySelector(".raidplanArrowNext");
 
-  const dots =
-    carousel.querySelectorAll(
-      ".raidplanDot",
-    );
+  const dots = carousel.querySelectorAll(".raidplanDot");
 
-  carousel.dataset.currentSlide =
-    String(requestedIndex);
+  carousel.dataset.currentSlide = String(requestedIndex);
 
   if (image) {
-    image.src =
-      buildRaidplanPath(
-        currentRaidId,
-        slide.image,
-      );
+    image.src = buildRaidplanPath(currentRaidId, slide.image);
 
-    image.alt =
-      slide.alt ||
-      "";
+    image.alt = slide.alt || "";
   }
 
   if (caption) {
-    caption.textContent =
-      slide.caption ||
-      "";
+    caption.textContent = slide.caption || "";
   }
 
   if (previousButton) {
-    previousButton.disabled =
-      requestedIndex === 0;
+    previousButton.disabled = requestedIndex === 0;
   }
 
   if (nextButton) {
-    nextButton.disabled =
-      requestedIndex ===
-      slides.length - 1;
+    nextButton.disabled = requestedIndex === slides.length - 1;
   }
 
-  dots.forEach(
-    (
-      dot,
-      dotIndex,
-    ) => {
-      const isActive =
-        dotIndex ===
-        requestedIndex;
+  dots.forEach((dot, dotIndex) => {
+    const isActive = dotIndex === requestedIndex;
 
-      dot.classList.toggle(
-        "active",
-        isActive,
-      );
+    dot.classList.toggle("active", isActive);
 
-      if (isActive) {
-        dot.setAttribute(
-          "aria-current",
-          "true",
-        );
-      } else {
-        dot.removeAttribute(
-          "aria-current",
-        );
-      }
-    },
-  );
+    if (isActive) {
+      dot.setAttribute("aria-current", "true");
+    } else {
+      dot.removeAttribute("aria-current");
+    }
+  });
 }
 
 function getCarouselIndex(carousel) {
-  return Number(
-    carousel.dataset
-      .currentSlide ||
-    0,
-  );
+  return Number(carousel.dataset.currentSlide || 0);
 }
 
 /* =========================================
@@ -1404,63 +953,36 @@ function getCarouselIndex(carousel) {
 ========================================= */
 
 function renderRoleSummaries(boss) {
-  const roles =
-    boss.roles ||
-    boss.roleSummaries;
+  const roles = boss.roles || boss.roleSummaries;
 
-  if (
-    !roles ||
-    typeof roles !==
-      "object"
-  ) {
+  if (!roles || typeof roles !== "object") {
     return "";
   }
 
-  const orderedRoles = [
-    "tank",
-    "heal",
-    "dps",
-    "all",
-  ];
+  const orderedRoles = ["tank", "heal", "dps", "all"];
 
-  const cards =
-    orderedRoles
-      .filter(
-        (role) =>
-          roles[role],
-      )
-      .map((role) => {
-        const content =
-          Array.isArray(
-            roles[role],
-          )
-            ? roles[role].join(
-                " ",
-              )
-            : roles[role];
+  const cards = orderedRoles
+    .filter((role) => roles[role])
+    .map((role) => {
+      const content = Array.isArray(roles[role])
+        ? roles[role].join(" ")
+        : roles[role];
 
-        return `
+      return `
           <article
             class="roleSummaryCard role-${role}"
           >
             <h3>
-              ${escapeHtml(
-                ROLE_LABELS[
-                  role
-                ] ||
-                role,
-              )}
+              ${escapeHtml(ROLE_LABELS[role] || role)}
             </h3>
 
             <p>
-              ${escapeHtml(
-                content,
-              )}
+              ${escapeHtml(content)}
             </p>
           </article>
         `;
-      })
-      .join("");
+    })
+    .join("");
 
   if (!cards) {
     return "";
@@ -1484,32 +1006,15 @@ function renderRoleSummaries(boss) {
 ========================================= */
 
 function renderTips(boss) {
-  if (
-    !boss.tips ||
-    typeof boss.tips !==
-      "object"
-  ) {
+  if (!boss.tips || typeof boss.tips !== "object") {
     return "";
   }
 
-  const doItems =
-    Array.isArray(
-      boss.tips.do,
-    )
-      ? boss.tips.do
-      : [];
+  const doItems = Array.isArray(boss.tips.do) ? boss.tips.do : [];
 
-  const dontItems =
-    Array.isArray(
-      boss.tips.dont,
-    )
-      ? boss.tips.dont
-      : [];
+  const dontItems = Array.isArray(boss.tips.dont) ? boss.tips.dont : [];
 
-  if (
-    doItems.length === 0 &&
-    dontItems.length === 0
-  ) {
+  if (doItems.length === 0 && dontItems.length === 0) {
     return "";
   }
 
@@ -1533,9 +1038,7 @@ function renderTips(boss) {
                     .map(
                       (item) => `
                         <li>
-                          ${escapeHtml(
-                            item,
-                          )}
+                          ${escapeHtml(item)}
                         </li>
                       `,
                     )
@@ -1559,9 +1062,7 @@ function renderTips(boss) {
                     .map(
                       (item) => `
                         <li>
-                          ${escapeHtml(
-                            item,
-                          )}
+                          ${escapeHtml(item)}
                         </li>
                       `,
                     )
@@ -1585,18 +1086,12 @@ function renderVideo(boss) {
     return "";
   }
 
-  const embedUrl =
-    getVideoEmbedUrl(
-      boss.video,
-    );
+  const embedUrl = getVideoEmbedUrl(boss.video);
 
   return `
     <section class="bossVideoSection">
       <h2>
-        ${escapeHtml(
-          boss.video.title ||
-          "Guide vidéo",
-        )}
+        ${escapeHtml(boss.video.title || "Guide vidéo")}
       </h2>
 
       ${
@@ -1604,12 +1099,9 @@ function renderVideo(boss) {
           ? `
             <div class="videoWrapper">
               <iframe
-                src="${escapeAttribute(
-                  embedUrl,
-                )}"
+                src="${escapeAttribute(embedUrl)}"
                 title="${escapeAttribute(
-                  boss.video.title ||
-                  `Guide vidéo de ${boss.name}`,
+                  boss.video.title || `Guide vidéo de ${boss.name}`,
                 )}"
                 loading="lazy"
                 allow="
@@ -1640,16 +1132,9 @@ function getVideoEmbedUrl(video) {
     return "";
   }
 
-  if (
-    video.provider ===
-      "youtube" &&
-    video.id
-  ) {
+  if (video.provider === "youtube" && video.id) {
     return (
-      "https://www.youtube-nocookie.com/embed/" +
-      encodeURIComponent(
-        video.id,
-      )
+      "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(video.id)
     );
   }
 
@@ -1665,15 +1150,9 @@ function getVideoEmbedUrl(video) {
 ========================================= */
 
 function renderLoadingError(message) {
-  const sidebar =
-    document.querySelector(
-      "#bossSidebar",
-    );
+  const sidebar = document.querySelector("#bossSidebar");
 
-  const content =
-    document.querySelector(
-      "#bossGuideContent",
-    );
+  const content = document.querySelector("#bossGuideContent");
 
   if (sidebar) {
     sidebar.innerHTML = `
@@ -1686,10 +1165,7 @@ function renderLoadingError(message) {
   if (content) {
     content.innerHTML = `
       <p class="errorMessage">
-        ${escapeHtml(
-          message ||
-          "Impossible de charger le guide.",
-        )}
+        ${escapeHtml(message || "Impossible de charger le guide.")}
       </p>
     `;
   }
@@ -1700,29 +1176,12 @@ function renderLoadingError(message) {
 ========================================= */
 
 function escapeHtml(value) {
-  return String(
-    value ?? "",
-  )
-    .replaceAll(
-      "&",
-      "&amp;",
-    )
-    .replaceAll(
-      "<",
-      "&lt;",
-    )
-    .replaceAll(
-      ">",
-      "&gt;",
-    )
-    .replaceAll(
-      '"',
-      "&quot;",
-    )
-    .replaceAll(
-      "'",
-      "&#039;",
-    );
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 function escapeAttribute(value) {
@@ -1734,37 +1193,29 @@ function escapeAttribute(value) {
 ========================================= */
 
 function initializeRaidplanLightbox() {
-  document
-    .querySelectorAll(".raidplanBlock")
-    .forEach((carousel) => {
-      const image =
-        carousel.querySelector(".raidplanImage");
+  document.querySelectorAll(".raidplanBlock").forEach((carousel) => {
+    const image = carousel.querySelector(".raidplanImage");
 
-      if (!image) {
-        return;
-      }
+    if (!image) {
+      return;
+    }
 
-      image.addEventListener("click", () => {
-        openRaidplanLightbox(carousel);
-      });
+    image.addEventListener("click", () => {
+      openRaidplanLightbox(carousel);
     });
+  });
 }
 
 function openRaidplanLightbox(carousel) {
-  const slides =
-    JSON.parse(
-      carousel.dataset.slides || "[]"
-    );
+  const slides = JSON.parse(carousel.dataset.slides || "[]");
 
   if (slides.length === 0) {
     return;
   }
 
-  let currentIndex =
-    getCarouselIndex(carousel);
+  let currentIndex = getCarouselIndex(carousel);
 
-  const lightbox =
-    document.createElement("div");
+  const lightbox = document.createElement("div");
 
   lightbox.className = "raidplanLightbox";
 
@@ -1818,7 +1269,7 @@ function openRaidplanLightbox(carousel) {
                 data-slide-index="${index}"
                 aria-label="Afficher le plan ${index + 1}"
               ></button>
-            `
+            `,
           )
           .join("")}
       </div>
@@ -1828,105 +1279,58 @@ function openRaidplanLightbox(carousel) {
 
   document.body.appendChild(lightbox);
 
-  document.body.classList.add(
-    "raidplanLightboxOpen"
-  );
+  document.body.classList.add("raidplanLightboxOpen");
 
-  const image =
-    lightbox.querySelector(
-      ".raidplanLightboxImage"
-    );
+  const image = lightbox.querySelector(".raidplanLightboxImage");
 
-  const caption =
-    lightbox.querySelector(
-      ".raidplanLightboxCaption"
-    );
+  const caption = lightbox.querySelector(".raidplanLightboxCaption");
 
-  const previousButton =
-    lightbox.querySelector(
-      ".raidplanLightboxPrevious"
-    );
+  const previousButton = lightbox.querySelector(".raidplanLightboxPrevious");
 
-  const nextButton =
-    lightbox.querySelector(
-      ".raidplanLightboxNext"
-    );
+  const nextButton = lightbox.querySelector(".raidplanLightboxNext");
 
-  const closeButton =
-    lightbox.querySelector(
-      ".raidplanLightboxClose"
-    );
+  const closeButton = lightbox.querySelector(".raidplanLightboxClose");
 
-  const dots =
-    lightbox.querySelectorAll(
-      ".raidplanLightboxDot"
-    );
+  const dots = lightbox.querySelectorAll(".raidplanLightboxDot");
 
   function updateLightbox(index) {
-    if (
-      index < 0 ||
-      index >= slides.length
-    ) {
+    if (index < 0 || index >= slides.length) {
       return;
     }
 
     currentIndex = index;
 
-    const slide =
-      slides[currentIndex];
+    const slide = slides[currentIndex];
 
-    image.src =
-      buildRaidplanPath(
-        currentRaidId,
-        slide.image
-      );
+    image.src = buildRaidplanPath(currentRaidId, slide.image);
 
-    image.alt =
-      slide.alt || "";
+    image.alt = slide.alt || "";
 
-    caption.textContent =
-      slide.caption || "";
+    caption.textContent = slide.caption || "";
 
-    previousButton.disabled =
-      currentIndex === 0;
+    previousButton.disabled = currentIndex === 0;
 
-    nextButton.disabled =
-      currentIndex ===
-      slides.length - 1;
+    nextButton.disabled = currentIndex === slides.length - 1;
 
-    dots.forEach(
-      (dot, dotIndex) => {
-        const isActive =
-          dotIndex === currentIndex;
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === currentIndex;
 
-        dot.classList.toggle(
-          "active",
-          isActive
-        );
-      }
-    );
+      dot.classList.toggle("active", isActive);
+    });
 
     /*
      * Synchronise également le petit
      * carrousel de la page.
      */
-    changeCarouselSlide(
-      carousel,
-      currentIndex
-    );
+    changeCarouselSlide(carousel, currentIndex);
   }
 
   function closeLightbox() {
     lightbox.remove();
 
-    document.body.classList.remove(
-      "raidplanLightboxOpen"
-    );
+    document.body.classList.remove("raidplanLightboxOpen");
 
-    document.removeEventListener(
-      "keydown",
-      handleKeyboard
-    );
+    document.removeEventListener("keydown", handleKeyboard);
   }
 
   function handleKeyboard(event) {
@@ -1934,77 +1338,64 @@ function openRaidplanLightbox(carousel) {
       closeLightbox();
     }
 
-    if (
-      event.key === "ArrowLeft"
-    ) {
-      updateLightbox(
-        currentIndex - 1
-      );
+    if (event.key === "ArrowLeft") {
+      updateLightbox(currentIndex - 1);
     }
 
-    if (
-      event.key === "ArrowRight"
-    ) {
-      updateLightbox(
-        currentIndex + 1
-      );
+    if (event.key === "ArrowRight") {
+      updateLightbox(currentIndex + 1);
     }
   }
 
-  previousButton.addEventListener(
-    "click",
-    () => {
-      updateLightbox(
-        currentIndex - 1
-      );
-    }
-  );
+  previousButton.addEventListener("click", () => {
+    updateLightbox(currentIndex - 1);
+  });
 
-  nextButton.addEventListener(
-    "click",
-    () => {
-      updateLightbox(
-        currentIndex + 1
-      );
-    }
-  );
+  nextButton.addEventListener("click", () => {
+    updateLightbox(currentIndex + 1);
+  });
 
-  closeButton.addEventListener(
-    "click",
-    closeLightbox
-  );
+  closeButton.addEventListener("click", closeLightbox);
 
   dots.forEach((dot) => {
-    dot.addEventListener(
-      "click",
-      () => {
-        updateLightbox(
-          Number(
-            dot.dataset.slideIndex
-          )
-        );
-      }
-    );
+    dot.addEventListener("click", () => {
+      updateLightbox(Number(dot.dataset.slideIndex));
+    });
   });
 
   /*
    * Clic sur le fond noir = fermeture.
    */
-  lightbox.addEventListener(
-    "click",
-    (event) => {
-      if (
-        event.target === lightbox
-      ) {
-        closeLightbox();
-      }
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
     }
-  );
+  });
 
-  document.addEventListener(
-    "keydown",
-    handleKeyboard
-  );
+  document.addEventListener("keydown", handleKeyboard);
 
   updateLightbox(currentIndex);
+}
+
+function loadWowheadTooltips() {
+  if (
+    document.querySelector(
+      'script[data-wowhead-tooltips]'
+    )
+  ) {
+    return;
+  }
+
+  const script =
+    document.createElement("script");
+
+  script.src =
+    "https://wow.zamimg.com/js/tooltips.js";
+
+  script.async = true;
+
+  script.dataset.wowheadTooltips =
+    "true";
+
+  document.head.appendChild(script);
 }

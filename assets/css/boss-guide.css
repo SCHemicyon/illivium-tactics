@@ -32,6 +32,16 @@
    PAGE
 ========================================= */
 
+.wowheadSpell {
+  color:#e2ddd2;
+  text-decoration: none;
+}
+
+.wowheadSpell:hover {
+  color: var(--accent-color);
+}
+
+
 .bossGuideMain {
   display: block;
 
